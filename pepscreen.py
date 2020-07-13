@@ -50,19 +50,19 @@ def stop():
   pass
 
 #Button set up
-fourteenButton  = Button(screen, text = "14 inch", font = myFont, bg = "lightgreen", command = fourteenProgram, height = 4 , width = 8) 
+fourteenButton  = Button(screen, text = "14 inch", font = myFont, bg = "lightgreen", command = fourteenProgram, height = 3 , width = 6) 
 fourteenButton.place(x=610, y=0)
 
-twelveButton  = Button(screen, text = "12 inch", font = myFont, bg = "lightgreen", command = twelveProgram, height = 4 , width = 8) 
+twelveButton  = Button(screen, text = "12 inch", font = myFont, bg = "lightgreen", command = twelveProgram, height = 3 , width = 6) 
 twelveButton.place(x=405, y=0)
 
-tenButton  = Button(screen, text = "10 inch", font = myFont, bg = "lightgreen", command = tenProgram, height = 4 , width = 8) 
+tenButton  = Button(screen, text = "10 inch", font = myFont, bg = "lightgreen", command = tenProgram, height = 3 , width = 6) 
 tenButton.place(x=205, y=0)
 
-sevenButton  = Button(screen, text = "7 inch", font = myFont, bg = "lightgreen", command = sevenProgram, height = 4 , width = 8) 
+sevenButton  = Button(screen, text = "7 inch", font = myFont, bg = "lightgreen", command = sevenProgram, height = 3 , width = 6) 
 sevenButton.place(x=0, y=0)
 
-stopButton  = Button(screen, text = "STOP", font = myFontLarge, bg = "red", command = stop, height = 10 , width = 10) 
+stopButton  = Button(screen, text = "STOP", font = myFontLarge, bg = "red", command = stop, height = 8 , width = 10) 
 stopButton.place(x=200, y=150)
 
 mainloop()
