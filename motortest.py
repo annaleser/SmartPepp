@@ -1,4 +1,4 @@
-from time import sleep
+import time
 import RPi.GPIO as GPIO
 
 #Board set up
@@ -15,7 +15,6 @@ BIG_SPR = 48   # Steps per Revolution (360 / 7.5)
 
 GPIO.setup(BIG_DIR, GPIO.OUT)
 GPIO.setup(BIG_STEP, GPIO.OUT)
-GPIO.output(BIG_DIR, CW)
 
 #Small stepper motor set up
 SMALL_DIR = 13   # Direction GPIO Pin
@@ -37,28 +36,60 @@ GPIO.setup(en,GPIO.OUT)
 GPIO.output(in1,GPIO.LOW)
 GPIO.output(in2,GPIO.LOW)
 
-p=GPIO.PWM(en,1000)
-p.start(25)
+#DC Motor commented out for testing of bottom motors
+#Create PWM instance with channel and 1000 frequency
+#*p=GPIO.PWM(en,1000)
+#Start with 25% duty cycle
+#*p.start(25)
 #The default speed & direction of motor is LOW & Forward....
-#r-run s-stop f-forward b-backward l-low m-medium h-high e-exit
+#SPEED
+    #p.ChangeDutyCycle(25 - low, 50 - med, 75 - high)
+#DIRECION
+    #GPIO.output(in1,GPIO.LOW)
+    #GPIO.output(in2,GPIO.LOW)
+    #forward: in1 HIGH, in2 LOW
+    #backward: in1 LOW, in2 HIGH
+    #stop: in1 LOW, in2 LOW
+#Stop PWM
+#*p.stop()
 
 #Run big stepper
 step_count = BIG_SPR
 delay = .0208
 
+GPIO.output(BIG_DIR, CW)
 for x in range(step_count):
     GPIO.output(BIG_STEP, GPIO.HIGH)
-    sleep(delay)
+    time.sleep(delay)
     GPIO.output(BIG_STEP, GPIO.LOW)
-    sleep(delay)
+    time.sleep(delay)
 
-sleep(.5)
+time.sleep(.5)
 GPIO.output(BIG_DIR, CCW)
 for x in range(step_count):
     GPIO.output(BIG_STEP, GPIO.HIGH)
-    sleep(delay)
+    time.sleep(delay)
     GPIO.output(BIG_STEP, GPIO.LOW)
-    sleep(delay)
+    time.sleep(delay)
 
+#Run small stepper
+step_count = SMALL_SPR
+delay = .0208
+
+GPIO.output(SMALL_DIR, CW)
+for x in range(step_count):
+    GPIO.output(SMALL_STEP, GPIO.HIGH)
+    time.sleep(delay)
+    GPIO.output(SMALL_STEP, GPIO.LOW)
+    time.sleep(delay)
+
+time.sleep(.5)
+GPIO.output(SMALL_SPR, CCW)
+for x in range(step_count):
+    GPIO.output(SMALL_STEP, GPIO.HIGH)
+    time.sleep(delay)
+    GPIO.output(SMALL_STEP, GPIO.LOW)
+    time.sleep(delay)
+    
 #Clean up pins
 GPIO.cleanup()
