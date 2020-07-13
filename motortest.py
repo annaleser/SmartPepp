@@ -3,7 +3,6 @@ import RPi.GPIO as GPIO
 
 #Board set up
 GPIO.setmode(GPIO.BOARD)
-GPIO.cleanup()
 GPIO.setwarnings(False)
 
 #Rotation variables
