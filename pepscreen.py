@@ -27,7 +27,7 @@ screen.title("Sm^rt Pepp")
 myFont = tkFont.Font(family = 'Helvetica', size = 36, weight = 'bold')
 myFontSmall = tkFont.Font(family = 'Helvetica', size = 12, weight = 'bold')
 myFontMed = tkFont.Font(family = 'Helvetica', size = 20, weight = 'bold')
-myFontLarge = tkFont.Font(family = 'Helvetica', size = 64, weight = 'bold')
+myFontLarge = tkFont.Font(family = 'Helvetica', size = 80, weight = 'bold')
 
 #7 inch function
 def sevenProgram():
@@ -62,7 +62,7 @@ tenButton.place(x=203, y=0)
 sevenButton  = Button(screen, text = "7 inch", font = myFont, bg = "lightgreen", command = sevenProgram, height = 2 , width = 6) 
 sevenButton.place(x=0, y=0)
 
-stopButton  = Button(screen, text = "STOP", font = myFontLarge, bg = "red", command = stop, height = 5 , width = 10) 
+stopButton  = Button(screen, text = "STOP", font = myFontLarge, bg = "red", command = stop, height = 3 , width = 10) 
 stopButton.place(x=200, y=150)
 
 mainloop()
