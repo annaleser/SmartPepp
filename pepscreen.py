@@ -27,7 +27,7 @@ screen.title("Sm^rt Pepp")
 myFont = tkFont.Font(family = 'Helvetica', size = 36, weight = 'bold')
 myFontSmall = tkFont.Font(family = 'Helvetica', size = 12, weight = 'bold')
 myFontMed = tkFont.Font(family = 'Helvetica', size = 20, weight = 'bold')
-myFontLarge = tkFont.Font(family = 'Helvetica', size = 48, weight = 'bold')
+myFontLarge = tkFont.Font(family = 'Helvetica', size = 64, weight = 'bold')
 
 #7 inch function
 def sevenProgram():
@@ -50,19 +50,19 @@ def stop():
   pass
 
 #Button set up
-fourteenButton  = Button(screen, text = "14 inch", font = myFont, bg = "lightgreen", command = fourteenProgram, height = 3 , width = 6) 
+fourteenButton  = Button(screen, text = "14 inch", font = myFont, bg = "lightgreen", command = fourteenProgram, height = 2 , width = 6) 
 fourteenButton.place(x=610, y=0)
 
-twelveButton  = Button(screen, text = "12 inch", font = myFont, bg = "lightgreen", command = twelveProgram, height = 3 , width = 6) 
-twelveButton.place(x=405, y=0)
+twelveButton  = Button(screen, text = "12 inch", font = myFont, bg = "lightgreen", command = twelveProgram, height = 2 , width = 6) 
+twelveButton.place(x=406, y=0)
 
-tenButton  = Button(screen, text = "10 inch", font = myFont, bg = "lightgreen", command = tenProgram, height = 3 , width = 6) 
-tenButton.place(x=205, y=0)
+tenButton  = Button(screen, text = "10 inch", font = myFont, bg = "lightgreen", command = tenProgram, height = 2 , width = 6) 
+tenButton.place(x=203, y=0)
 
-sevenButton  = Button(screen, text = "7 inch", font = myFont, bg = "lightgreen", command = sevenProgram, height = 3 , width = 6) 
+sevenButton  = Button(screen, text = "7 inch", font = myFont, bg = "lightgreen", command = sevenProgram, height = 2 , width = 6) 
 sevenButton.place(x=0, y=0)
 
-stopButton  = Button(screen, text = "STOP", font = myFontLarge, bg = "red", command = stop, height = 8 , width = 10) 
+stopButton  = Button(screen, text = "STOP", font = myFontLarge, bg = "red", command = stop, height = 7 , width = 12) 
 stopButton.place(x=200, y=150)
 
 mainloop()
