@@ -62,7 +62,7 @@ tenButton.place(x=203, y=0)
 sevenButton  = Button(screen, text = "7 inch", font = myFont, bg = "lightgreen", command = sevenProgram, height = 2 , width = 6) 
 sevenButton.place(x=0, y=0)
 
-stopButton  = Button(screen, text = "STOP", font = myFontLarge, bg = "red", command = stop, height = 2.25 , width = 8) 
-stopButton.place(x=150, y=150)
+stopButton  = Button(screen, text = "STOP", font = myFontLarge, bg = "red", command = stop, height = 2 , width = 8) 
+stopButton.place(x=150, y=175)
 
 mainloop()
