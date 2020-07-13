@@ -3,6 +3,7 @@ import RPi.GPIO as GPIO
 
 #Board set up
 GPIO.setmode(GPIO.BOARD)
+GPIO.cleanup()
 
 #Rotation variables
 CW = 1     # Clockwise Rotation
