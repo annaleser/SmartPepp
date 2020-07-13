@@ -84,7 +84,7 @@ for x in range(step_count):
     time.sleep(delay)
 
 time.sleep(.5)
-GPIO.output(SMALL_SPR, CCW)
+GPIO.output(SMALL_DIR, CCW)
 for x in range(step_count):
     GPIO.output(SMALL_STEP, GPIO.HIGH)
     time.sleep(delay)
