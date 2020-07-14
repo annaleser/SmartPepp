@@ -59,7 +59,7 @@ step_count = BIG_SPR
 delay = .0208
 
 GPIO.output(BIG_DIR, CW)
-for x in range(step_count):
+for x in range(100):
     GPIO.output(BIG_STEP, GPIO.HIGH)
     time.sleep(delay)
     GPIO.output(BIG_STEP, GPIO.LOW)
@@ -67,7 +67,7 @@ for x in range(step_count):
 
 time.sleep(.5)
 GPIO.output(BIG_DIR, CCW)
-for x in range(step_count):
+for x in range(100):
     GPIO.output(BIG_STEP, GPIO.HIGH)
     time.sleep(delay)
     GPIO.output(BIG_STEP, GPIO.LOW)
