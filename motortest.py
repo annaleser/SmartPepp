@@ -10,16 +10,16 @@ CW = 1     # Clockwise Rotation
 CCW = 0    # Counterclockwise Rotation
 
 #Big stepper motor set up
-BIG_DIR = 11   # Direction GPIO Pin
-BIG_STEP = 12  # Step GPIO Pin
+BIG_DIR = 13   # Direction GPIO Pin
+BIG_STEP = 15  # Step GPIO Pin
 BIG_SPR = 48   # Steps per Revolution (360 / 7.5)
 
 GPIO.setup(BIG_DIR, GPIO.OUT)
 GPIO.setup(BIG_STEP, GPIO.OUT)
 
 #Small stepper motor set up
-SMALL_DIR = 13   # Direction GPIO Pin
-SMALL_STEP = 15  # Step GPIO Pin
+SMALL_DIR = 11   # Direction GPIO Pin
+SMALL_STEP = 12  # Step GPIO Pin
 SMALL_SPR = 48   # Steps per Revolution (360 / 7.5)
 
 GPIO.setup(SMALL_DIR, GPIO.OUT)
@@ -59,7 +59,7 @@ step_count = BIG_SPR
 delay = .0208
 
 GPIO.output(BIG_DIR, CW)
-for x in range(100):
+for x in range(step_count):
     GPIO.output(BIG_STEP, GPIO.HIGH)
     time.sleep(delay)
     GPIO.output(BIG_STEP, GPIO.LOW)
@@ -67,7 +67,7 @@ for x in range(100):
 
 time.sleep(.5)
 GPIO.output(BIG_DIR, CCW)
-for x in range(100):
+for x in range(step_count):
     GPIO.output(BIG_STEP, GPIO.HIGH)
     time.sleep(delay)
     GPIO.output(BIG_STEP, GPIO.LOW)
