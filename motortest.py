@@ -24,7 +24,6 @@ SMALL_SPR = 48   # Steps per Revolution (360 / 7.5)
 
 GPIO.setup(SMALL_DIR, GPIO.OUT)
 GPIO.setup(SMALL_STEP, GPIO.OUT)
-GPIO.output(SMALL_DIR, CW)
 
 #DC motor set up
 in1 = 3
