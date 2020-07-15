@@ -53,26 +53,6 @@ GPIO.output(in2,GPIO.LOW)
 #Stop PWM
 #*p.stop()
 
-#Run big stepper
-print("Big step running")
-step_count = BIG_SPR
-delay = .0208
-
-GPIO.output(BIG_DIR, CW)
-for x in range(step_count):
-    GPIO.output(BIG_STEP, GPIO.HIGH)
-    time.sleep(delay)
-    GPIO.output(BIG_STEP, GPIO.LOW)
-    time.sleep(delay)
-
-time.sleep(.5)
-GPIO.output(BIG_DIR, CCW)
-for x in range(step_count):
-    GPIO.output(BIG_STEP, GPIO.HIGH)
-    time.sleep(delay)
-    GPIO.output(BIG_STEP, GPIO.LOW)
-    time.sleep(delay)
-
 #Run small stepper
 print("Small step running")
 step_count = SMALL_SPR
