@@ -54,6 +54,7 @@ GPIO.output(in2,GPIO.LOW)
 #*p.stop()
 
 #Run big stepper
+print("Big step running")
 step_count = BIG_SPR
 delay = .0208
 
@@ -73,6 +74,7 @@ for x in range(step_count):
     time.sleep(delay)
 
 #Run small stepper
+print("Small step running")
 step_count = SMALL_SPR
 delay = .0208
 
