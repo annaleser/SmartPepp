@@ -10,8 +10,8 @@ CW = 1     # Clockwise Rotation
 CCW = 0    # Counterclockwise Rotation
 
 #Big stepper motor set up
-BIG_DIR = 13   # Direction GPIO Pin
-BIG_STEP = 15  # Step GPIO Pin
+BIG_DIR = 21   # Direction GPIO Pin
+BIG_STEP = 22  # Step GPIO Pin
 BIG_SPR = 48   # Steps per Revolution (360 / 7.5)
 
 GPIO.setup(BIG_DIR, GPIO.OUT)
