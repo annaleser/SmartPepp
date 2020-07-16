@@ -75,7 +75,7 @@ revolutions = BIG_REVS
 
 GPIO.output(BIG_DIR, CW)
 GPIO.output(SMALL_DIR, CW)
-n = 2
+n = 3
 for x in range(n*step_count*revolutions):
     GPIO.output(BIG_STEP, GPIO.HIGH)
     if(x%n == 0):
