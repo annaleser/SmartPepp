@@ -61,7 +61,7 @@ step_count = SMALL_SPR
 revolutions = SMALL_REVS
 delay = .0208
 
-GPIO.output(SMALL_DIR, CW)
+GPIO.output(SMALL_DIR, CCW)
 for x in range(step_count*revolutions):
     GPIO.output(SMALL_STEP, GPIO.HIGH)
     time.sleep(delay)
@@ -75,7 +75,7 @@ revolutions = BIG_REVS
 delay = .0208
 
 GPIO.output(BIG_DIR, CW)
-GPIO.output(SMALL_DIR, CCW)
+GPIO.output(SMALL_DIR, CW)
 for x in range(step_count*revolutions):
     GPIO.output(BIG_STEP, GPIO.HIGH)
     GPIO.output(SMALL_STEP, GPIO.HIGH)
