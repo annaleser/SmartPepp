@@ -51,13 +51,13 @@ GPIO.output(in2,GPIO.LOW)
 #Run small stepper inward
 print("Small step running in")
 smallM.setDirection(CCW)
-smallM.runxSteps(10)
+smallM.runxSteps(100)
 
 #Run big and small stepper
 print("Big and small step running")
 smallM.setDirection(CW)
-smallM.runxSteps(10)
-bigM.runxSteps(10)
+smallM.runxSteps(100)
+bigM.runxSteps(100)
     
 #Clean up pins
 GPIO.cleanup()
