@@ -4,7 +4,6 @@ import MotorDriver
 import multiprocessing
 
 #Board set up
-GPIO.setmode(GPIO.BOARD)
 GPIO.setwarnings(False)
 
 #Rotation variables
