@@ -2,6 +2,7 @@ import time
 import RPi.GPIO as GPIO
 import MotorDriver
 import multiprocessing
+from Tkinter import *
 
 #Board set up
 GPIO.setwarnings(False)
@@ -61,3 +62,5 @@ bigM.runxSteps(100)
     
 #Clean up pins
 GPIO.cleanup()
+
+mainloop()
