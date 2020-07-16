@@ -1,7 +1,7 @@
 import RPi.GPIO as GPIO
 import multiprocessing 
 import time
-GPIO.setmode(GPIO.BCM)
+GPIO.setmode(GPIO.BOARD)
 class StepMotor:
     directionPin=0
     pulsePin=0
