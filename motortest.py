@@ -13,6 +13,7 @@ CCW = 0    # Counterclockwise Rotation
 BIG_DIR = 21   # Direction GPIO Pin
 BIG_STEP = 22  # Step GPIO Pin
 BIG_SPR = 48   # Steps per Revolution (360 / 7.5)
+BIG_REVS = 100 #Number of times to run loop
 
 GPIO.setup(BIG_DIR, GPIO.OUT)
 GPIO.setup(BIG_STEP, GPIO.OUT)
@@ -21,6 +22,7 @@ GPIO.setup(BIG_STEP, GPIO.OUT)
 SMALL_DIR = 11   # Direction GPIO Pin
 SMALL_STEP = 12  # Step GPIO Pin
 SMALL_SPR = 48   # Steps per Revolution (360 / 7.5)
+SMALL_REVS = 100 #Number of times to run loop
 
 GPIO.setup(SMALL_DIR, GPIO.OUT)
 GPIO.setup(SMALL_STEP, GPIO.OUT)
@@ -53,43 +55,32 @@ GPIO.output(in2,GPIO.LOW)
 #Stop PWM
 #*p.stop()
 
-#Run big stepper
-print("Big step running")
-step_count = BIG_SPR
-delay = .0208
-
-GPIO.output(BIG_DIR, CW)
-for x in range(step_count):
-    GPIO.output(BIG_STEP, GPIO.HIGH)
-    time.sleep(delay)
-    GPIO.output(BIG_STEP, GPIO.LOW)
-    time.sleep(delay)
-
-time.sleep(.5)
-GPIO.output(BIG_DIR, CCW)
-for x in range(step_count):
-    GPIO.output(BIG_STEP, GPIO.HIGH)
-    time.sleep(delay)
-    GPIO.output(BIG_STEP, GPIO.LOW)
-    time.sleep(delay)
-
-#Run small stepper
+#Run small stepper inward
 print("Small step running")
 step_count = SMALL_SPR
+revolutions = SMALL_REVS
 delay = .0208
 
 GPIO.output(SMALL_DIR, CW)
-for x in range(step_count):
+for x in range(step_count*revolutions):
     GPIO.output(SMALL_STEP, GPIO.HIGH)
     time.sleep(delay)
     GPIO.output(SMALL_STEP, GPIO.LOW)
     time.sleep(delay)
 
-time.sleep(.5)
+#Run big and small stepper
+print("Big step running")
+step_count = BIG_SPR
+revolutions = BIG_REVS
+delay = .0208
+
+GPIO.output(BIG_DIR, CW)
 GPIO.output(SMALL_DIR, CCW)
-for x in range(step_count):
+for x in range(step_count*revolutions):
+    GPIO.output(BIG_STEP, GPIO.HIGH)
     GPIO.output(SMALL_STEP, GPIO.HIGH)
     time.sleep(delay)
+    GPIO.output(BIG_STEP, GPIO.LOW)
     GPIO.output(SMALL_STEP, GPIO.LOW)
     time.sleep(delay)
     
