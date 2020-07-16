@@ -2,7 +2,6 @@ import time
 import RPi.GPIO as GPIO
 import MotorDriver
 import multiprocessing
-from Tkinter import *
 
 #Board set up
 GPIO.setwarnings(False)
@@ -53,14 +52,16 @@ GPIO.output(in2,GPIO.LOW)
 print("Small step running in")
 smallM.setDirection(CCW)
 smallM.runxSteps(100)
+while(smallM.p.is_alive()):
+  pass
 
 #Run big and small stepper
 print("Big and small step running")
 smallM.setDirection(CW)
 smallM.runxSteps(100)
 bigM.runxSteps(100)
+while(smallM.p.is_alive() and bigM.p.is_alive()):
+  pass
     
 #Clean up pins
 GPIO.cleanup()
-
-mainloop()
