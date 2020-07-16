@@ -75,12 +75,15 @@ revolutions = BIG_REVS
 
 GPIO.output(BIG_DIR, CW)
 GPIO.output(SMALL_DIR, CW)
-for x in range(step_count*revolutions):
+n = 2
+for x in range(n*step_count*revolutions):
     GPIO.output(BIG_STEP, GPIO.HIGH)
-    GPIO.output(SMALL_STEP, GPIO.HIGH)
+    if(x%n == 0):
+      GPIO.output(SMALL_STEP, GPIO.HIGH)
     time.sleep(delay)
     GPIO.output(BIG_STEP, GPIO.LOW)
-    GPIO.output(SMALL_STEP, GPIO.LOW)
+    if(x%n == 0):
+      GPIO.output(SMALL_STEP, GPIO.LOW)
     time.sleep(delay)
     
 #Clean up pins
