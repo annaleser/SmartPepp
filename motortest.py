@@ -12,20 +12,12 @@ CCW = 0    # Counterclockwise Rotation
 #Big stepper motor set up
 BIG_DIR = 21   # Direction GPIO Pin
 BIG_STEP = 22  # Step GPIO Pin
-BIG_SPR = 200   # Steps per Revolution (360 / 7.5)
-BIG_REVS = 50 #Number of times to run loop
-
-GPIO.setup(BIG_DIR, GPIO.OUT)
-GPIO.setup(BIG_STEP, GPIO.OUT)
+bigM = MotorDriver.StepMotor(BIG_DIR,BIG_STEP) #Using motor class
 
 #Small stepper motor set up
 SMALL_DIR = 11   # Direction GPIO Pin
 SMALL_STEP = 12  # Step GPIO Pin
-SMALL_SPR = 200   # Steps per Revolution
-SMALL_REVS = 50 #Number of times to run loop
-
-GPIO.setup(SMALL_DIR, GPIO.OUT)
-GPIO.setup(SMALL_STEP, GPIO.OUT)
+smallM = MotorDriver.StepMotor(SMALL_DIR,SMALL_STEP) #Using motor class
 
 #DC motor set up
 in1 = 3
@@ -56,33 +48,15 @@ GPIO.output(in2,GPIO.LOW)
 #*p.stop()
 
 #Run small stepper inward
-print("Small step running")
-step_count = SMALL_SPR
-revolutions = SMALL_REVS
-delay = .0208
-
-GPIO.output(SMALL_DIR, CCW)
-for x in range(step_count*revolutions):
-    GPIO.output(SMALL_STEP, GPIO.HIGH)
-    time.sleep(delay)
-    GPIO.output(SMALL_STEP, GPIO.LOW)
-    time.sleep(delay)
+print("Small step running in")
+smallM.setDirection(CCW)
+smallM.runxSteps(10)
 
 #Run big and small stepper
-print("Big step running")
-step_count = BIG_SPR
-revolutions = BIG_REVS
-delay = .0208
-
-GPIO.output(BIG_DIR, CW)
-GPIO.output(SMALL_DIR, CW)
-for x in range(step_count*revolutions):
-    GPIO.output(BIG_STEP, GPIO.HIGH)
-    GPIO.output(SMALL_STEP, GPIO.HIGH)
-    time.sleep(delay)
-    GPIO.output(BIG_STEP, GPIO.LOW)
-    GPIO.output(SMALL_STEP, GPIO.LOW)
-    time.sleep(delay)
+print("Big and small step running")
+smallM.setDirection(CW)
+smallM.runxSteps(10)
+bigM.runxSteps(10)
     
 #Clean up pins
 GPIO.cleanup()
