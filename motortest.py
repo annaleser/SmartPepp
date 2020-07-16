@@ -1,5 +1,7 @@
 import time
 import RPi.GPIO as GPIO
+import MotorDriver
+import multiprocessing
 
 #Board set up
 GPIO.setmode(GPIO.BOARD)
