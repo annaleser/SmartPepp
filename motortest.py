@@ -25,7 +25,7 @@ GPIO.setup(SMALL_DIR, GPIO.OUT)
 GPIO.setup(SMALL_STEP, GPIO.OUT)
 
 #Stepper motor variables
-straightAmt = 600
+straightAmt = 800
 spin = 16
 
 #DC motor set up
@@ -56,53 +56,40 @@ GPIO.output(in2,GPIO.LOW)
 #Stop PWM
 #*p.stop()
 
+GPIO.output(BIG_DIR, CW)
 GPIO.output(SMALL_DIR, CCW)
-wait = 104
-#Slow start small stepper
-for i in range(straightAmt/3):
-    GPIO.output(SMALL_STEP, GPIO.HIGH)
-    time.sleep(wait*delay)
-    GPIO.output(SMALL_STEP, GPIO.LOW)
-    time.sleep(wait*delay)
-    wait = wait - 0.5
-
+wait = 3900
 #Run small stepper to center
 print("Small step running inward")
 
-for i in range(straightAmt):
-    GPIO.output(SMALL_STEP, GPIO.HIGH)
-    time.sleep(4*delay)
-    GPIO.output(SMALL_STEP, GPIO.LOW)
-    time.sleep(4*delay)
+for i in range(straightAmt*spin):
+    GPIO.output(BIG_STEP, GPIO.HIGH)
+    time.sleep(wait*delay)
+    GPIO.output(BIG_STEP, GPIO.LOW)
+    time.sleep(wait*delay)
+    if(i%(spin) == 0):
+      GPIO.output(SMALL_STEP, GPIO.HIGH)
+      time.sleep(wait*delay)
+      GPIO.output(SMALL_STEP, GPIO.LOW)
+      time.sleep(wait*delay)
+    wait = wait-0.000078125
 
 #Run big and small stepper
 print("Big and small step running")
 
-GPIO.output(BIG_DIR, CW)
 GPIO.output(SMALL_DIR, CW)
-
+wait = 1
 for i in range(straightAmt*spin):
     GPIO.output(BIG_STEP, GPIO.HIGH)
-    time.sleep(delay)
+    time.sleep(wait*delay)
     GPIO.output(BIG_STEP, GPIO.LOW)
-    time.sleep(delay)
+    time.sleep(wait*delay)
     if(i%(spin) == 0):
       GPIO.output(SMALL_STEP, GPIO.HIGH)
-      time.sleep(delay)
+      time.sleep(wait*delay)
       GPIO.output(SMALL_STEP, GPIO.LOW)
-      time.sleep(delay)
-    delay = delay + 0.00000001
-
-wait = 1
-#Slow start small stepper
-for i in range(straightAmt/3):
-    GPIO.output(SMALL_STEP, GPIO.HIGH)
-    GPIO.output(BIG_STEP, GPIO.HIGH)
-    time.sleep(wait*delay)
-    GPIO.output(BIG_STEP, GPIO.LOW)
-    GPIO.output(SMALL_STEP, GPIO.LOW)
-    time.sleep(wait*delay)
-    wait = wait + 0.5
+      time.sleep(wait*delay)
+    wait = wait+0.000078125
 
 #Clean up pins
 GPIO.cleanup()
