@@ -9,7 +9,7 @@ GPIO.setwarnings(False)
 CW = 1     # Clockwise Rotation
 CCW = 0    # Counterclockwise Rotation
 delay = .002
-b_delay = .0005
+b_delay = .00075
 
 #Big stepper motor set up
 BIG_DIR = 21   # Direction GPIO Pin
