@@ -1,6 +1,10 @@
 import time
 import RPi.GPIO as GPIO
 
+#Board set up
+GPIO.setmode(GPIO.BOARD)
+GPIO.setwarnings(False)
+
 #DC Motor set up
 in1 = 3
 in2 = 5
