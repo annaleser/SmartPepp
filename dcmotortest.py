@@ -20,6 +20,7 @@ GPIO.output(in2,GPIO.LOW)
 #Create PWM instance with channel and 1000 frequency
 p=GPIO.PWM(en,1000)
 #Start with 25% duty cycle
+p.start(25)
 GPIO.output(in1,GPIO.HIGH)
 time.sleep(5)
 #The default speed & direction of motor is LOW & Forward....
@@ -33,3 +34,4 @@ time.sleep(5)
     #stop: in1 LOW, in2 LOW
 #Stop PWM
 GPIO.output(in1,GPIO.LOW)
+p.stop()
