@@ -13,8 +13,7 @@ delay = .002
 #Big stepper motor set up
 BIG_DIR = 21   # Direction GPIO Pin
 BIG_STEP = 22  # Step GPIO Pin
-BIG_SPR = 200   # Steps per Revolution (360 / 7.5)
-BIG_REVS = 6 #Number of times to run loop
+BIG_SPR = 200   # Steps per Revolution
 
 GPIO.setup(BIG_DIR, GPIO.OUT)
 GPIO.setup(BIG_STEP, GPIO.OUT)
@@ -23,7 +22,7 @@ GPIO.setup(BIG_STEP, GPIO.OUT)
 SMALL_DIR = 11   # Direction GPIO Pin
 SMALL_STEP = 12  # Step GPIO Pin
 SMALL_SPR = 200   # Steps per Revolution
-IN_REVS = 6 #Number of times to run loop
+REPS = 6 #Number of times to run loop
 
 GPIO.setup(SMALL_DIR, GPIO.OUT)
 GPIO.setup(SMALL_STEP, GPIO.OUT)
@@ -57,34 +56,31 @@ GPIO.output(in2,GPIO.LOW)
 #*p.stop()
 
 #Run small stepper inward
-print("Small step running")
-step_count = SMALL_SPR
-revolutions = IN_REVS
+print("Inward small step running")
 
 GPIO.output(SMALL_DIR, CCW)
-for x in range(step_count*revolutions):
+for x in range(REPS*SMALL_SPR):
     GPIO.output(SMALL_STEP, GPIO.HIGH)
     time.sleep(delay)
     GPIO.output(SMALL_STEP, GPIO.LOW)
     time.sleep(delay)
 
 #Run big and small stepper
-print("Big step running")
-step_count = BIG_SPR
-revolutions = BIG_REVS
+print("Big and small step running")
 
 GPIO.output(BIG_DIR, CW)
 GPIO.output(SMALL_DIR, CW)
-n = 3
-for x in range(n*step_count*revolutions):
+for i in range(REPS):
+  for x in range(BIG_SPR):
     GPIO.output(BIG_STEP, GPIO.HIGH)
-    if(x%n == 0):
-      GPIO.output(SMALL_STEP, GPIO.HIGH)
     time.sleep(delay)
     GPIO.output(BIG_STEP, GPIO.LOW)
-    if(x%n == 0):
-      GPIO.output(SMALL_STEP, GPIO.LOW)
     time.sleep(delay)
-    
+  for y in range(SMALL_SPR):
+    GPIO.output(SMALL_STEP, GPIO.HIGH)
+    time.sleep(delay)
+    GPIO.output(SMALL_STEP, GPIO.LOW)
+    time.sleep(delay)
+
 #Clean up pins
 GPIO.cleanup()
