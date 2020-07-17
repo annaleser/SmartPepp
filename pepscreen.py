@@ -20,7 +20,7 @@ import os
 #TK screen set up
 screen = Tk()
 screen.overrideredirect(1)
-screen.geometry('800x480')
+screen.geometry('800x520')
 screen.title("Sm^rt Pepp")
 
 #Fonts for screen
