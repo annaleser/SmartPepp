@@ -72,7 +72,7 @@ for i in range(straightAmt*spin):
       time.sleep(wait*delay)
       GPIO.output(SMALL_STEP, GPIO.LOW)
       time.sleep(wait*delay)
-    wait = (1/5184)((3i/3200)-12)^4+1
+    wait = (1/5184)((3*i/3200)-12)^4+1
 
 #Run big and small stepper no delay
 print("Big and small step running")
