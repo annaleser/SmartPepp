@@ -9,13 +9,13 @@ GPIO.setwarnings(False)
 CW = 1     # Clockwise Rotation
 CCW = 0    # Counterclockwise Rotation
 delay = .002
-b_delay = .001
+b_delay = .0005
 
 #Big stepper motor set up
 BIG_DIR = 21   # Direction GPIO Pin
 BIG_STEP = 22  # Step GPIO Pin
 BIG_SPR = 200   # Steps per Revolution
-SPIN = 20
+SPIN = 16
 
 GPIO.setup(BIG_DIR, GPIO.OUT)
 GPIO.setup(BIG_STEP, GPIO.OUT)
