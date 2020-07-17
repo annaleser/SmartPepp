@@ -15,7 +15,7 @@ b_delay = .00025
 BIG_DIR = 21   # Direction GPIO Pin
 BIG_STEP = 22  # Step GPIO Pin
 BIG_SPR = 200   # Steps per Revolution
-SPIN = 16
+SPIN = 16.25
 
 GPIO.setup(BIG_DIR, GPIO.OUT)
 GPIO.setup(BIG_STEP, GPIO.OUT)
