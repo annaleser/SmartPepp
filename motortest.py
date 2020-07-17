@@ -77,11 +77,11 @@ for i in range(int(REPS*SPIN*BIG_SPR)):
     time.sleep(b_delay)
     GPIO.output(BIG_STEP, GPIO.LOW)
     time.sleep(b_delay)
-  if(i%(REPS*SMALL_SPR) == 0):
-    GPIO.output(SMALL_STEP, GPIO.HIGH)
-    time.sleep(s_delay)
-    GPIO.output(SMALL_STEP, GPIO.LOW)
-    time.sleep(s_delay)
+    if(i%(REPS*SMALL_SPR) == 0):
+      GPIO.output(SMALL_STEP, GPIO.HIGH)
+      time.sleep(s_delay)
+      GPIO.output(SMALL_STEP, GPIO.LOW)
+      time.sleep(s_delay)
 
 #Clean up pins
 GPIO.cleanup()
