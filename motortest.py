@@ -14,6 +14,7 @@ delay = .002
 BIG_DIR = 21   # Direction GPIO Pin
 BIG_STEP = 22  # Step GPIO Pin
 BIG_SPR = 200   # Steps per Revolution
+SPIN = 6
 
 GPIO.setup(BIG_DIR, GPIO.OUT)
 GPIO.setup(BIG_STEP, GPIO.OUT)
@@ -71,7 +72,7 @@ print("Big and small step running")
 GPIO.output(BIG_DIR, CW)
 GPIO.output(SMALL_DIR, CW)
 for i in range(REPS):
-  for x in range(BIG_SPR):
+  for x in range(SPIN*BIG_SPR):
     GPIO.output(BIG_STEP, GPIO.HIGH)
     time.sleep(delay)
     GPIO.output(BIG_STEP, GPIO.LOW)
