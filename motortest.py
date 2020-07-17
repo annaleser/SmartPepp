@@ -58,7 +58,7 @@ GPIO.output(in2,GPIO.LOW)
 
 GPIO.output(BIG_DIR, CW)
 GPIO.output(SMALL_DIR, CCW)
-wait = 50
+wait = 10
 #Run small stepper to center
 print("Small step running inward")
 
@@ -72,7 +72,7 @@ for i in range(straightAmt*spin):
       time.sleep(wait*delay)
       GPIO.output(SMALL_STEP, GPIO.LOW)
       time.sleep(wait*delay)
-    wait = wait*0.9996944199
+    wait = wait*0.99982012671
 
 #Run big and small stepper
 print("Big and small step running")
@@ -89,7 +89,7 @@ for i in range(straightAmt*spin):
       time.sleep(wait*delay)
       GPIO.output(SMALL_STEP, GPIO.LOW)
       time.sleep(wait*delay)
-    wait = wait*1.00030567351
+    wait = wait*1.00017990564
 
 #Clean up pins
 GPIO.cleanup()
