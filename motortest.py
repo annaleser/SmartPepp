@@ -24,7 +24,7 @@ GPIO.setup(BIG_STEP, GPIO.OUT)
 SMALL_DIR = 11   # Direction GPIO Pin
 SMALL_STEP = 12  # Step GPIO Pin
 SMALL_SPR = 200   # Steps per Revolution
-REPS = 6 #Number of times to run loop
+REPS = 3 #Number of times to run loop
 
 GPIO.setup(SMALL_DIR, GPIO.OUT)
 GPIO.setup(SMALL_STEP, GPIO.OUT)
@@ -72,13 +72,12 @@ print("Big and small step running")
 
 GPIO.output(BIG_DIR, CW)
 GPIO.output(SMALL_DIR, CW)
-for i in range(REPS):
-  for x in range(int(SPIN*BIG_SPR)):
+for i in range(REPS*SPIN*BIG_SPR)):
     GPIO.output(BIG_STEP, GPIO.HIGH)
     time.sleep(b_delay)
     GPIO.output(BIG_STEP, GPIO.LOW)
     time.sleep(b_delay)
-  for y in range(SMALL_SPR):
+  if(i%(REPS*SMALL_SPR) == 0):
     GPIO.output(SMALL_STEP, GPIO.HIGH)
     time.sleep(s_delay)
     GPIO.output(SMALL_STEP, GPIO.LOW)
