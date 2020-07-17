@@ -56,6 +56,7 @@ GPIO.output(in2,GPIO.LOW)
 #Stop PWM
 #*p.stop()
 
+GPIO.output(SMALL_DIR, CCW)
 wait = 104
 #Slow start small stepper
 for i in range(straightAmt/3):
@@ -68,7 +69,6 @@ for i in range(straightAmt/3):
 #Run small stepper to center
 print("Small step running inward")
 
-GPIO.output(SMALL_DIR, CCW)
 for i in range(straightAmt):
     GPIO.output(SMALL_STEP, GPIO.HIGH)
     time.sleep(4*delay)
