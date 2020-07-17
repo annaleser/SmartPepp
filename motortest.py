@@ -23,7 +23,7 @@ GPIO.setup(BIG_STEP, GPIO.OUT)
 SMALL_DIR = 11   # Direction GPIO Pin
 SMALL_STEP = 12  # Step GPIO Pin
 SMALL_SPR = 200   # Steps per Revolution
-REPS = 3 #Number of times to run loop
+REPS = 4 #Number of times to run loop
 
 GPIO.setup(SMALL_DIR, GPIO.OUT)
 GPIO.setup(SMALL_STEP, GPIO.OUT)
