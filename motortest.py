@@ -62,9 +62,9 @@ print("Inward small step running")
 GPIO.output(SMALL_DIR, CCW)
 for x in range(REPS*SMALL_SPR):
     GPIO.output(SMALL_STEP, GPIO.HIGH)
-    time.sleep(delay)
+    time.sleep(3*delay)
     GPIO.output(SMALL_STEP, GPIO.LOW)
-    time.sleep(delay)
+    time.sleep(3*delay)
 
 #Run big and small stepper
 print("Big and small step running")
