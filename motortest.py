@@ -73,7 +73,7 @@ print("Big and small step running")
 GPIO.output(BIG_DIR, CW)
 GPIO.output(SMALL_DIR, CW)
 for i in range(REPS):
-  for x in range(SPIN*BIG_SPR):
+  for x in range(int(SPIN*BIG_SPR)):
     GPIO.output(BIG_STEP, GPIO.HIGH)
     time.sleep(b_delay)
     GPIO.output(BIG_STEP, GPIO.LOW)
