@@ -59,7 +59,7 @@ GPIO.output(in2,GPIO.LOW)
 wait = 104
 #Slow start small stepper
 for i in range(straightAmt/3):
-  GPIO.output(SMALL_STEP, GPIO.HIGH)
+    GPIO.output(SMALL_STEP, GPIO.HIGH)
     time.sleep(wait*delay)
     GPIO.output(SMALL_STEP, GPIO.LOW)
     time.sleep(wait*delay)
@@ -96,7 +96,7 @@ for i in range(straightAmt*spin):
 wait = 1
 #Slow start small stepper
 for i in range(straightAmt/3):
-  GPIO.output(SMALL_STEP, GPIO.HIGH)
+    GPIO.output(SMALL_STEP, GPIO.HIGH)
     time.sleep(wait*delay)
     GPIO.output(SMALL_STEP, GPIO.LOW)
     time.sleep(wait*delay)
