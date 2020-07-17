@@ -25,7 +25,7 @@ GPIO.setup(SMALL_DIR, GPIO.OUT)
 GPIO.setup(SMALL_STEP, GPIO.OUT)
 
 #Stepper motor variables
-straightAmt = 800
+straightAmt = 600
 spin = 16
 
 #DC motor set up
@@ -56,6 +56,15 @@ GPIO.output(in2,GPIO.LOW)
 #Stop PWM
 #*p.stop()
 
+wait = 104
+#Slow start small stepper
+for i in range(straightAmt/3):
+  GPIO.output(SMALL_STEP, GPIO.HIGH)
+    time.sleep(wait*delay)
+    GPIO.output(SMALL_STEP, GPIO.LOW)
+    time.sleep(wait*delay)
+    wait = wait - 0.5
+
 #Run small stepper to center
 print("Small step running inward")
 
@@ -83,6 +92,15 @@ for i in range(straightAmt*spin):
       GPIO.output(SMALL_STEP, GPIO.LOW)
       time.sleep(delay)
     delay = delay + 0.00000001
+
+wait = 1
+#Slow start small stepper
+for i in range(straightAmt/3):
+  GPIO.output(SMALL_STEP, GPIO.HIGH)
+    time.sleep(wait*delay)
+    GPIO.output(SMALL_STEP, GPIO.LOW)
+    time.sleep(wait*delay)
+    wait = wait + 0.5
 
 #Clean up pins
 GPIO.cleanup()
