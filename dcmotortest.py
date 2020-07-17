@@ -18,7 +18,7 @@ GPIO.output(in2,GPIO.LOW)
 
 #DC Motor commented out for testing of bottom motors
 #Create PWM instance with channel and 1000 frequency
-p=GPIO.PWM(en,500)
+p=GPIO.PWM(en,10000)
 #Start with 25% duty cycle
 p.start(100)
 GPIO.output(in2,GPIO.HIGH)
