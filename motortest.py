@@ -61,6 +61,7 @@ wait = 104
 #Slow start small stepper
 for i in range(straightAmt/3):
     GPIO.output(SMALL_STEP, GPIO.HIGH)
+    print(wait*delay)
     time.sleep(wait*delay)
     GPIO.output(SMALL_STEP, GPIO.LOW)
     time.sleep(wait*delay)
