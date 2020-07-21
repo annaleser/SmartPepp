@@ -25,7 +25,7 @@ GPIO.setup(SMALL_DIR, GPIO.OUT)
 GPIO.setup(SMALL_STEP, GPIO.OUT)
 
 #Stepper motor variables
-straightAmt = 1000
+straightAmt = 600
 spin = 16
 
 #DC motor set up
