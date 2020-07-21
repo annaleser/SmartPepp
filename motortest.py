@@ -35,7 +35,7 @@ print("SMALL")
 GPIO.output(SMALL_DIR, CCW)
 delay = .0005
 for i in range(1000):
-    delay = -0.008*(i/2000-.5)**4+.0005
+    delay = -0.008*(i/2000.0-.5)**4+.0005
     print(delay)
     GPIO.output(SMALL_STEP, GPIO.HIGH)
     time.sleep(delay)
@@ -45,7 +45,7 @@ for i in range(1000):
 #OUT
 GPIO.output(SMALL_DIR, CW)
 for i in range(1000):
-    delay =  -0.008*((1-i/2000)-.5)**4+.0005
+    delay =  -0.008*((1-i/2000.0)-.5)**4+.0005
     GPIO.output(SMALL_STEP, GPIO.HIGH)
     time.sleep(delay)
     GPIO.output(SMALL_STEP, GPIO.LOW)
