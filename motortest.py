@@ -30,7 +30,7 @@ print("BIG")
 
 #SPIN
 GPIO.output(BIG_DIR, CW)
-for i in range(10000):
+for i in range(50000):
     GPIO.output(BIG_STEP, GPIO.HIGH)
     time.sleep(delay)
     GPIO.output(BIG_STEP, GPIO.LOW)
