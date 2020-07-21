@@ -35,21 +35,12 @@ print("SMALL")
 #IN
 GPIO.output(SMALL_DIR, CCW)
 delay = .0005
-for i in range(1000):
+for i in range(2000):
     delay = -2.6666666666666*(10**-15)*(i**4)+1.0666666666666*(10**-11)*(i**3)-1.333333333333*(10**-8)*(i**2)+5.333333333333*(10**-6)*i
     print(delay)
     GPIO.output(SMALL_STEP, GPIO.HIGH)
     time.sleep(delay)
     GPIO.output(SMALL_STEP, GPIO.LOW)
     time.sleep(delay)
-
-#OUT
-GPIO.output(SMALL_DIR, CW)
-for i in range(1000):
-    delay = -2.6666666666666*(10**-15)*((1000+i)**4)+1.0666666666666*(10**-11)*((1000+i)**3)-1.333333333333*(10**-8)*((1000+i)**2)+5.333333333333*(10**-6)*(1000+i)
-    time.sleep(delay)
-    GPIO.output(SMALL_STEP, GPIO.LOW)
-    time.sleep(delay)
-    
-#Clean up pins
-GPIO.cleanup()
+    if(i == 1000):
+      GPIO.output(SMALL_DIR, CW)
