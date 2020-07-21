@@ -27,6 +27,7 @@ GPIO.setup(SMALL_STEP, GPIO.OUT)
 
 #delay =  -0.008*(i-.5)**4+.0005
 #delay = -0.0426667*(i**4)+0.0853333*(i**3)-0.0533333*(i**2)+0.0106667*i
+#delay = -4.2666666666666*(10**-14)*(i**4)+8.533333333333*(10**-11)*(i**3)-5.333333333333*(10**-8)*(i**2)+0.0000106667i
 #Variables for steppers
 print("SMALL")
 
@@ -34,7 +35,7 @@ print("SMALL")
 GPIO.output(SMALL_DIR, CCW)
 delay = .0005
 for i in range(1000):
-    delay = -0.008*(i-.5)**4+.0005
+    delay = -0.008*(i/2000-.5)**4+.0005
     print(delay)
     GPIO.output(SMALL_STEP, GPIO.HIGH)
     time.sleep(delay)
@@ -44,7 +45,7 @@ for i in range(1000):
 #OUT
 GPIO.output(SMALL_DIR, CW)
 for i in range(1000):
-    delay =  -0.008*((100-i)-.5)**4+.0005
+    delay =  -0.008*((1-i/2000)-.5)**4+.0005
     GPIO.output(SMALL_STEP, GPIO.HIGH)
     time.sleep(delay)
     GPIO.output(SMALL_STEP, GPIO.LOW)
