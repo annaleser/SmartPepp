@@ -36,7 +36,7 @@ lpwm = 7
 
 GPIO.setup(rpwm,GPIO.OUT)
 GPIO.setup(lpwm,GPIO.OUT)
-GPIO.output(rpwm)
+GPIO.output(rpwm, GPIO.LOW)
 GPIO.output(lpwm,GPIO.LOW)
 
 #Set lpwm high to go forward and rpwm high for backward...might only need one
