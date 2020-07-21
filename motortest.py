@@ -8,7 +8,7 @@ GPIO.setwarnings(False)
 #Rotation and delay variables
 CW = 1     # Clockwise Rotation
 CCW = 0    # Counterclockwise Rotation
-delay = .0005
+delay = .00005
 
 #Big stepper motor set up
 BIG_DIR = 21   # Direction GPIO Pin
@@ -30,7 +30,7 @@ print("BIG")
 
 #SPIN
 GPIO.output(BIG_DIR, CW)
-for i in range(1000):
+for i in range(5000):
     GPIO.output(BIG_STEP, GPIO.HIGH)
     time.sleep(delay)
     GPIO.output(BIG_STEP, GPIO.LOW)
