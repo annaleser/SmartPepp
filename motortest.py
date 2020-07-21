@@ -48,7 +48,6 @@ GPIO.output(lpwm,GPIO.LOW)
 print("Small step running inward")
 GPIO.output(SMALL_DIR, CCW)
 for x in range(SMALL_SPR):
-    delay = delay + 0.0001
     GPIO.output(SMALL_STEP, GPIO.HIGH)
     time.sleep(delay)
     GPIO.output(SMALL_STEP, GPIO.LOW)
