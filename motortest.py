@@ -64,7 +64,7 @@ for i in range(int(REPS*SPIN*BIG_SPR)):
     time.sleep(delay)
     GPIO.output(BIG_STEP, GPIO.LOW)
     time.sleep(delay)
-    if(i%(SPIN) == 0):
+    #if(i%(SPIN) == 0):
       #GPIO.output(SMALL_STEP, GPIO.HIGH)
       #time.sleep(delay)
       #GPIO.output(SMALL_STEP, GPIO.LOW)
