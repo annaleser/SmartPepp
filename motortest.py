@@ -25,17 +25,17 @@ SMALL_SPR = 200   # Steps per Revolution
 GPIO.setup(SMALL_DIR, GPIO.OUT)
 GPIO.setup(SMALL_STEP, GPIO.OUT)
 
-#wait = int((1.0/5184)*((3.0*i/3200)-12)**4+1)
+#delay =  -0.008*(i-.5)**4+.0005
+#delay = -0.0426667*(i**4)+0.0853333*(i**3)-0.0533333*(i**2)+0.0106667*i
 #Variables for steppers
 print("SMALL")
 
-#SLOW IN
-GPIO.output(SMALL_DIR, CCW)
-
 #IN
+GPIO.output(SMALL_DIR, CCW)
 delay = .0005
 for i in range(1000):
-    delay =  -0.008*(i-.5)**4+.0005
+    delay = -0.008*(i-.5)**4+.0005
+    print(delay)
     GPIO.output(SMALL_STEP, GPIO.HIGH)
     time.sleep(delay)
     GPIO.output(SMALL_STEP, GPIO.LOW)
