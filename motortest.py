@@ -91,7 +91,7 @@ for i in range(straightAmt*spin):
       time.sleep(delay)
       GPIO.output(SMALL_STEP, GPIO.LOW)
       time.sleep(delay)
-    delay = delay + 0.0000001
+    delay = delay + 0.000000001
 
 wait = 1
 #Slow stop small stepper
