@@ -6,22 +6,21 @@ GPIO.setmode(GPIO.BOARD)
 GPIO.setwarnings(False)
 
 #DC Motor set up
-in1 = 3
-in2 = 5
-en = 7
+rpwm = 5
+lpwm = 7
 
-GPIO.setup(in1,GPIO.OUT)
-GPIO.setup(in2,GPIO.OUT)
-GPIO.setup(en,GPIO.OUT)
-GPIO.output(in1,GPIO.LOW)
-GPIO.output(in2,GPIO.LOW)
+GPIO.setup(rpwm,GPIO.OUT)
+GPIO.setup(lpwm,GPIO.OUT)
+GPIO.output(rpwm, GPIO.LOW)
+GPIO.output(lpwm,GPIO.LOW)
 
-#DC Motor commented out for testing of bottom motors
-#Create PWM instance with channel and 1000 frequency
-p=GPIO.PWM(en,1000)
+#Set lpwm high to go forward and rpwm high for backward...might only need one
+#since we just want one direction
+#Try creating GPIO.PWM(pin, 100) but not sure if it will work... p.start()
+#p.changeDutyCycle() and p.stop()
+p=GPIO.PWM(rpwm,100)
 #Start with 25% duty cycle
 p.start(100)
-GPIO.output(in2,GPIO.HIGH)
 time.sleep(5)
 #The default speed & direction of motor is LOW & Forward....
 #SPEED
@@ -33,5 +32,4 @@ time.sleep(5)
     #backward: in1 LOW, in2 HIGH
     #stop: in1 LOW, in2 LOW
 #Stop PWM
-GPIO.output(in2,GPIO.LOW)
 p.stop()
