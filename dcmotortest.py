@@ -18,10 +18,10 @@ GPIO.output(lpwm,GPIO.LOW)
 #since we just want one direction
 #Try creating GPIO.PWM(pin, 100) but not sure if it will work... p.start()
 #p.changeDutyCycle() and p.stop()
-p=GPIO.PWM(rpwm,100)
+p=GPIO.PWM(rpwm,25)
 #Start with 25% duty cycle
 p.start(25)
-time.sleep(5)
+time.sleep(3)
 #The default speed & direction of motor is LOW & Forward....
 #SPEED
     #p.ChangeDutyCycle(25 - low, 50 - med, 75 - high)
