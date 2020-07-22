@@ -44,6 +44,3 @@ for i in range(10000):
 
 #Stop motor
 p.stop()
-
-#Clean up pins
-GPIO.cleanup()
