@@ -5,6 +5,18 @@ import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BOARD)
 GPIO.setwarnings(False)
 
+#Rotation and delay variables
+CW = 1     # Clockwise Rotation
+CCW = 0    # Counterclockwise Rotation
+delay = .000025
+
+#Big stepper motor set up
+BIG_DIR = 21   # Direction GPIO Pin
+BIG_STEP = 22  # Step GPIO Pin
+
+GPIO.setup(BIG_DIR, GPIO.OUT)
+GPIO.setup(BIG_STEP, GPIO.OUT)
+
 #DC Motor set up
 rpwm = 5
 lpwm = 7
@@ -14,22 +26,24 @@ GPIO.setup(lpwm,GPIO.OUT)
 GPIO.output(rpwm, GPIO.LOW)
 GPIO.output(lpwm,GPIO.LOW)
 
-#Set lpwm high to go forward and rpwm high for backward...might only need one
-#since we just want one direction
-#Try creating GPIO.PWM(pin, 100) but not sure if it will work... p.start()
-#p.changeDutyCycle() and p.stop()
+#DC Motor start
 p=GPIO.PWM(rpwm,50)
-#Start with 25% duty cycle
-p.start(25)
-time.sleep(3)
-#The default speed & direction of motor is LOW & Forward....
-#SPEED
-    #p.ChangeDutyCycle(25 - low, 50 - med, 75 - high)
-#DIRECION
-    #GPIO.output(in1,GPIO.LOW)
-    #GPIO.output(in2,GPIO.LOW)
-    #forward: in1 HIGH, in2 LOW
-    #backward: in1 LOW, in2 HIGH
-    #stop: in1 LOW, in2 LOW
-#Stop PWM
 p.stop()
+p.start(25)
+
+#Variables for steppers
+print("BIG")
+
+#SPIN
+GPIO.output(BIG_DIR, CW)
+for i in range(10000):
+    GPIO.output(BIG_STEP, GPIO.HIGH)
+    time.sleep(delay)
+    GPIO.output(BIG_STEP, GPIO.LOW)
+    time.sleep(delay)
+
+#Stop motor
+p.stop()
+
+#Clean up pins
+GPIO.cleanup()
