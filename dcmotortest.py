@@ -28,7 +28,6 @@ GPIO.output(lpwm,GPIO.LOW)
 
 #DC Motor start
 p=GPIO.PWM(rpwm,50)
-p.stop()
 p.start(25)
 
 #Variables for steppers
