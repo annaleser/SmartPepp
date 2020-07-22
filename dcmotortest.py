@@ -20,7 +20,7 @@ GPIO.output(lpwm,GPIO.LOW)
 #p.changeDutyCycle() and p.stop()
 p=GPIO.PWM(rpwm,100)
 #Start with 25% duty cycle
-p.start(100)
+p.start(25)
 time.sleep(5)
 #The default speed & direction of motor is LOW & Forward....
 #SPEED
