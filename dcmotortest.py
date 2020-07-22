@@ -31,9 +31,6 @@ p=GPIO.PWM(rpwm,50)
 p.stop()
 p.start(25)
 
-GPIO.setup(SMALL_DIR, GPIO.OUT)
-GPIO.setup(SMALL_STEP, GPIO.OUT)
-
 #Variables for steppers
 print("BIG")
 
