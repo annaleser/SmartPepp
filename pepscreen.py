@@ -1,6 +1,6 @@
 from Tkinter import *
 import tkFont
-#import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO
 import time
 import sys
 #import serial
@@ -12,10 +12,39 @@ import json
 import os
 
 #Raspberry Pi set up
-#GPIO.setmode(GPIO.BOARD)
+GPIO.setmode(GPIO.BOARD)
 
 #Motor set up
-#************************
+#Rotation and delay variables
+CW = 1     # Clockwise Rotation
+CCW = 0    # Counterclockwise Rotation
+s_delay = .00025
+b_delay = .000025
+
+#Big stepper motor set up
+BIG_DIR = 21   # Direction GPIO Pin
+BIG_STEP = 22  # Step GPIO Pin
+
+GPIO.setup(BIG_DIR, GPIO.OUT)
+GPIO.setup(BIG_STEP, GPIO.OUT)
+
+#Small stepper motor set up
+SMALL_DIR = 11   # Direction GPIO Pin
+SMALL_STEP = 12  # Step GPIO Pin
+
+GPIO.setup(SMALL_DIR, GPIO.OUT)
+GPIO.setup(SMALL_STEP, GPIO.OUT)
+
+#DC Motor set up
+rpwm = 5
+lpwm = 7
+
+GPIO.setup(rpwm,GPIO.OUT)
+GPIO.setup(lpwm,GPIO.OUT)
+GPIO.output(rpwm, GPIO.LOW)
+GPIO.output(lpwm,GPIO.LOW)
+
+p = GPIO.PWM(rpwm, 50)
 
 #TK screen set up
 screen = Tk()
@@ -39,15 +68,32 @@ def tenProgram():
 
 #12 inch function
 def twelveProgram():
-  pass
+  GPIO.output(BIG_DIR, CW)
+  while True:
+    GPIO.output(BIG_STEP, GPIO.HIGH)
+    time.sleep(delay)
+    GPIO.output(BIG_STEP, GPIO.LOW)
+    time.sleep(delay)
 
 #14 inch function
 def fourteenProgram():
-  pass
+  p.start(25)
+  GPIO.output(BIG_DIR, CW)
+  GPIO.output(SMALL_DIR, CCW)
+  for i in range(10000):
+    GPIO.output(BIG_STEP, GPIO.HIGH)
+    time.sleep(delay)
+    GPIO.output(BIG_STEP, GPIO.LOW)
+    time.sleep(delay)
+  p.stop()
 
 #Stop function
 def stop():
-  pass
+  p.stop()
+  GPIO.output(rpwm, GPIO.LOW)
+  GPIO.output(lpwm,GPIO.LOW)
+  GPIO.output(BIG_STEP, GPIO.LOW)
+  GPIO.output(SMALL_STEP,GPIO.LOW)
 
 #Button set up
 fourteenButton  = Button(screen, text = "14 inch", font = myFont, bg = "lightgreen", command = fourteenProgram, height = 2 , width = 6) 
