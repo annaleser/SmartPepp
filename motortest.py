@@ -41,6 +41,6 @@ GPIO.output(BIG_DIR, CW)
 GPIO.output(SMALL_DIR, CCW)
 while True:
     GPIO.output(BIG_STEP, GPIO.HIGH)
-    time.sleep(delay)
+    time.sleep(.00005)
     GPIO.output(BIG_STEP, GPIO.LOW)
     time.sleep(delay)
