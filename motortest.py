@@ -21,6 +21,9 @@ GPIO.setup(BIG_STEP, GPIO.OUT)
 SMALL_DIR = 11   # Direction GPIO Pin
 SMALL_STEP = 12  # Step GPIO Pin
 
+GPIO.setup(SMALL_DIR, GPIO.OUT)
+GPIO.setup(SMALL_STEP, GPIO.OUT)
+
 #DC Motor set up
 rpwm = 5
 lpwm = 7
