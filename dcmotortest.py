@@ -18,7 +18,7 @@ GPIO.output(lpwm,GPIO.LOW)
 #since we just want one direction
 #Try creating GPIO.PWM(pin, 100) but not sure if it will work... p.start()
 #p.changeDutyCycle() and p.stop()
-p=GPIO.PWM(rpwm,50)
+p=GPIO.PWM(rpwm,100)
 #Start with 25% duty cycle
 p.start(25)
 time.sleep(3)
