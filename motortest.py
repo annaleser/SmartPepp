@@ -8,10 +8,9 @@ GPIO.setwarnings(False)
 #Rotation and delay variables
 CW = 1     # Clockwise Rotation
 CCW = 0    # Counterclockwise Rotation
-delay = .0000125
+delay = .000025
 
 #Big stepper motor set up
-#BIG MOTOR RUNS BEST WITH DELAY OF .000025 to .000005
 BIG_DIR = 21   # Direction GPIO Pin
 BIG_STEP = 22  # Step GPIO Pin
 
@@ -19,20 +18,13 @@ GPIO.setup(BIG_DIR, GPIO.OUT)
 GPIO.setup(BIG_STEP, GPIO.OUT)
 
 #Small stepper motor set up
-#SMALL MOTOR RUNS BEST WITH DELAY OF .00025 TO .00075 (prime is .0005)
-SMALL_DIR = 11   # Direction GPIO Pin 
+SMALL_DIR = 11   # Direction GPIO Pin
 SMALL_STEP = 12  # Step GPIO Pin
-SMALL_SPR = 200   # Steps per Revolution
 
 GPIO.setup(SMALL_DIR, GPIO.OUT)
 GPIO.setup(SMALL_STEP, GPIO.OUT)
 
-#Variables for steppers
-BIG_SPR = 200   # Steps per Revolution
-SPIN = 16 #Amount to spin for full revolution
-REPS = 4 #Number of times to run loop
-
-#DC motor set up
+#DC Motor set up
 rpwm = 5
 lpwm = 7
 
@@ -41,41 +33,22 @@ GPIO.setup(lpwm,GPIO.OUT)
 GPIO.output(rpwm, GPIO.LOW)
 GPIO.output(lpwm,GPIO.LOW)
 
-#Set lpwm high to go forward and rpwm high for backward...might only need one
-#since we just want one direction
-#Try creating GPIO.PWM(pin, 100) but not sure if it will work... p.start()
-#p.changeDutyCycle() and p.stop()
+#DC Motor start
+p=GPIO.PWM(rpwm,50)
+p.stop()
+p.start(25)
 
-#Run small stepper to center
-print("Small step running inward")
-GPIO.output(SMALL_DIR, CCW)
-for x in range(SMALL_SPR):
-    GPIO.output(SMALL_STEP, GPIO.HIGH)
-    time.sleep(delay)
-    GPIO.output(SMALL_STEP, GPIO.LOW)
-    time.sleep(3*delay)
+#Variables for steppers
+print("BIG")
 
-for x in range(REPS*SMALL_SPR):
-    GPIO.output(SMALL_STEP, GPIO.HIGH)
-    time.sleep(3*delay)
-    GPIO.output(SMALL_STEP, GPIO.LOW)
-    time.sleep(3*delay)
-
-#Run big and small stepper
-print("Big and small step running")
-
+#SPIN
 GPIO.output(BIG_DIR, CW)
-GPIO.output(SMALL_DIR, CW)
-for i in range(int(REPS*SPIN*BIG_SPR)):
+GPIO.output(SMALL_DIR, CCW)
+for i in range(50000):
     GPIO.output(BIG_STEP, GPIO.HIGH)
-    time.sleep(delay)
+    time.sleep(.000025)
     GPIO.output(BIG_STEP, GPIO.LOW)
-    time.sleep(delay)
-    if(i%(SPIN) == 0):
-      GPIO.output(SMALL_STEP, GPIO.HIGH)
-      time.sleep(delay)
-      GPIO.output(SMALL_STEP, GPIO.LOW)
-      time.sleep(delay)
+    
 
-#Clean up pins
-GPIO.cleanup()
+#Stop motor
+p.stop()
