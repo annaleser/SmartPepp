@@ -17,6 +17,10 @@ BIG_STEP = 22  # Step GPIO Pin
 GPIO.setup(BIG_DIR, GPIO.OUT)
 GPIO.setup(BIG_STEP, GPIO.OUT)
 
+#Small stepper motor set up
+SMALL_DIR = 11   # Direction GPIO Pin
+SMALL_STEP = 12  # Step GPIO Pin
+
 #DC Motor set up
 rpwm = 5
 lpwm = 7
@@ -48,6 +52,7 @@ for i in range(50000):
       time.sleep(0.00025)
     else:
       time.sleep(.000025)
+    
 
 #Stop motor
 p.stop()
