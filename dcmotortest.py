@@ -33,3 +33,8 @@ time.sleep(5)
     #stop: in1 LOW, in2 LOW
 #Stop PWM
 p.stop()
+
+#Spin other way with basic on off
+GPIO.output(lpwm, GPIO.HIGH)
+time.sleep(5)
+GPIO.output(lpwm, GPIO.LOW)
