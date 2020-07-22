@@ -44,7 +44,7 @@ print("BIG")
 #SPIN
 GPIO.output(BIG_DIR, CW)
 GPIO.output(SMALL_DIR, CCW)
-for i in range(50000):
+while True:
     GPIO.output(BIG_STEP, GPIO.HIGH)
     time.sleep(.000025)
     GPIO.output(BIG_STEP, GPIO.LOW)
