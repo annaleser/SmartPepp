@@ -48,7 +48,7 @@ for i in range(50000):
     GPIO.output(BIG_STEP, GPIO.HIGH)
     time.sleep(.000025)
     GPIO.output(BIG_STEP, GPIO.LOW)
-    if(i%100 == 0):
+    if(i%10 == 0):
       GPIO.output(SMALL_STEP, GPIO.HIGH)
       time.sleep(0.00025)
       GPIO.output(SMALL_STEP, GPIO.LOW)
