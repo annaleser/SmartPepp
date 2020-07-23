@@ -69,12 +69,12 @@ def tenProgram():
 
 #12 inch function
 def twelveProgram():
-  print(GPIO.input(BIG_DIR))
   GPIO.output(BIG_DIR, CW)
-  GPIO.output(BIG_STEP, GPIO.HIGH)
-  time.sleep(b_delay)
-  GPIO.output(BIG_STEP, GPIO.LOW)
-  time.sleep(b_delay)
+  for i in range(1000):
+    GPIO.output(BIG_STEP, GPIO.HIGH)
+    time.sleep(b_delay)
+    GPIO.output(BIG_STEP, GPIO.LOW)
+    time.sleep(b_delay)
 
 #14 inch function
 def fourteenProgram():
@@ -103,9 +103,8 @@ fourteenButton.place(x=610, y=0)
 twelveButton  = Button(screen, text = "12 inch", font = myFont, bg = "lightgreen", command = twelveProgram, height = 2 , width = 6) 
 twelveButton.place(x=406, y=0)
 
-tenButton  = Button(screen, text = "10 inch", font = myFont, bg = "lightgreen", height = 2 , width = 6) 
-tenButton.bind("ButtonRelease-1",tenProgram)
-tenButton.pack()
+tenButton  = Button(screen, text = "10 inch", font = myFont, bg = "lightgreen", command = tenProgram, height = 2 , width = 6) 
+tenButton.place(x=203, y=0)
 
 sevenButton  = Button(screen, text = "7 inch", font = myFont, bg = "lightgreen", command = sevenProgram, height = 2 , width = 6) 
 sevenButton.place(x=0, y=0)
