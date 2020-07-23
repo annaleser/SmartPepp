@@ -103,7 +103,7 @@ fourteenButton.place(x=610, y=0)
 twelveButton  = Button(screen, text = "12 inch", font = myFont, bg = "lightgreen", command = twelveProgram, height = 2 , width = 6) 
 twelveButton.place(x=406, y=0)
 
-tenButton  = Button(screen, text = "10 inch", font = myFont, bg = "lightgreen", command = tenProgram, height = 2 , width = 6) 
+tenButton  = Button(screen, text = "10 inch", font = myFont, bg = "lightgreen", height = 2 , width = 6) 
 tenButton.place(x=203, y=0)
 tenButton.bind("<ButtonRelease-1>",tenProgram)
 
