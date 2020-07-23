@@ -50,7 +50,9 @@ p = Process(target=spin)
 
 #spin function
 def spinProgram():
+  print("hi")
   p.start()
+  p.join()
 
 #Stop function
 def stop():
