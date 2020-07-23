@@ -38,6 +38,7 @@ screen.title("Big Spinner")
 
 #Fonts for screen
 myFont = tkFont.Font(family = 'Helvetica', size = 36, weight = 'bold')
+myFontLarge = tkFont.Font(family = 'Helvetica', size = 80, weight = 'bold')
 
 def spin():
   GPIO.output(BIG_STEP, GPIO.HIGH)
