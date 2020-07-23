@@ -8,7 +8,6 @@ GPIO.setwarnings(False)
 #Rotation and delay variables
 CW = 1     # Clockwise Rotation
 CCW = 0    # Counterclockwise Rotation
-delay = .0125
 
 #Big stepper motor set up
 BIG_DIR = 21   # Direction GPIO Pin
@@ -37,19 +36,7 @@ print("SMALL")
 GPIO.output(SMALL_DIR, CCW)
 delay = .0005
 for i in range(2000):
-    delay = -2.6666666666666*(10**-15)*(i**4)+1.0666666666666*(10**-11)*(i**3)-1.333333333333*(10**-8)*(i**2)+5.333333333333*(10**-6)*i
-    print(delay)
     GPIO.output(SMALL_STEP, GPIO.HIGH)
-    time.sleep(delay)
-    GPIO.output(SMALL_STEP, GPIO.LOW)
-    time.sleep(delay)
-    if(i == 1000):
-      GPIO.output(SMALL_DIR, CW)
-
-#OUT
-GPIO.output(SMALL_DIR, CW)
-for i in range(1000):
-    delay = -2.6666666666666*(10**-15)*((1000+i)**4)+1.0666666666666*(10**-11)*((1000+i)**3)-1.333333333333*(10**-8)*((1000+i)**2)+5.333333333333*(10**-6)*(1000+i)
     time.sleep(delay)
     GPIO.output(SMALL_STEP, GPIO.LOW)
     time.sleep(delay)
