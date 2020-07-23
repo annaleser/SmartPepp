@@ -60,7 +60,7 @@ myFontLarge = tkFont.Font(family = 'Helvetica', size = 80, weight = 'bold')
 
 #7 inch function
 def sevenProgram():
-  pass
+  print("7")
 
 #10 inch function
 def tenProgram():
@@ -70,11 +70,10 @@ def tenProgram():
 def twelveProgram():
   print(GPIO.input(BIG_DIR))
   GPIO.output(BIG_DIR, CW)
-  while True:
-    GPIO.output(BIG_STEP, GPIO.HIGH)
-    time.sleep(delay)
-    GPIO.output(BIG_STEP, GPIO.LOW)
-    time.sleep(delay)
+  GPIO.output(BIG_STEP, GPIO.HIGH)
+  time.sleep(b_delay)
+  GPIO.output(BIG_STEP, GPIO.LOW)
+  time.sleep(b_delay)
 
 #14 inch function
 def fourteenProgram():
@@ -83,9 +82,9 @@ def fourteenProgram():
   GPIO.output(SMALL_DIR, CCW)
   for i in range(10000):
     GPIO.output(BIG_STEP, GPIO.HIGH)
-    time.sleep(delay)
+    time.sleep(b_delay)
     GPIO.output(BIG_STEP, GPIO.LOW)
-    time.sleep(delay)
+    time.sleep(b_delay)
   p.stop()
 
 #Stop function
