@@ -68,6 +68,7 @@ def tenProgram():
 
 #12 inch function
 def twelveProgram():
+  print(GPIO.output())
   GPIO.output(BIG_DIR, CW)
   while True:
     GPIO.output(BIG_STEP, GPIO.HIGH)
