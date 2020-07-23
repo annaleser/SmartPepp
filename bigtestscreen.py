@@ -10,7 +10,7 @@ import datetime
 #import urllib
 import json
 import os
-from multiprocessing import *
+import threading
 
 #Raspberry Pi set up
 GPIO.setmode(GPIO.BOARD)
@@ -29,7 +29,6 @@ BIG_STEP = 22  # Step GPIO Pin
 GPIO.setup(BIG_DIR, GPIO.OUT)
 GPIO.setup(BIG_STEP, GPIO.OUT)
 
-
 #TK screen set up
 screen = Tk()
 screen.overrideredirect(1)
@@ -41,14 +40,32 @@ myFont = tkFont.Font(family = 'Helvetica', size = 36, weight = 'bold')
 myFontLarge = tkFont.Font(family = 'Helvetica', size = 80, weight = 'bold')
 
 def spinProgram():
-  for i in range(10000):
-    GPIO.output(BIG_STEP, GPIO.HIGH)
-    time.sleep(delay)
-    GPIO.output(BIG_STEP, GPIO.LOW)
-    time.sleep(delay)
+    global running  #create global
+    running = True
+
+    # Create new thread
+    t = Thread(target = func)
+    # Start new thread
+    t.start()
+    
+def func():
+  while running:
+    if running == False:
+      break
+    else:
+      GPIO.output(BIG_STEP, GPIO.HIGH)
+      time.sleep(delay)
+      GPIO.output(BIG_STEP, GPIO.LOW)
+      time.sleep(delay)
+
+def stopProgram():
+  global running
+  running = False
 
 #Button set up
 spinButton  = Button(screen, text = "SPIN", font = myFontLarge, bg = "blue", command = spinProgram, height = 2 , width = 8) 
-spinButton.place(x=150, y=175)
+spinButton.place(x=150, y=0)
+stopButton  = Button(screen, text = "STOP", font = myFontLarge, bg = "red", command = stopProgram, height = 2 , width = 8) 
+stopButton.place(x=150, y=200)
 
 mainloop()
