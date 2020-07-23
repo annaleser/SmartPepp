@@ -64,7 +64,7 @@ def sevenProgram():
 
 #10 inch function
 def tenProgram():
-  pass
+  print("10")
 
 #12 inch function
 def twelveProgram():
