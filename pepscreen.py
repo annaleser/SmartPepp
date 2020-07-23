@@ -69,7 +69,7 @@ def ten():
 
 #10 inch function
 def tenProgram():
-  global t = Process(target=ten)
+  t = Process(target=ten)
   t.start()
 
 #12 inch function
