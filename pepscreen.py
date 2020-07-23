@@ -71,7 +71,6 @@ def ten():
 
 #10 inch function
 def tenProgram():
-  t = Process(target=ten)
   t.start()
 
 #12 inch function
@@ -103,6 +102,8 @@ def stop():
   GPIO.output(lpwm,GPIO.LOW)
   GPIO.output(BIG_STEP, GPIO.LOW)
   GPIO.output(SMALL_STEP,GPIO.LOW)
+
+t = Process(target=ten)
 
 #Button set up
 fourteenButton  = Button(screen, text = "14 inch", font = myFont, bg = "lightgreen", command = fourteenProgram, height = 2 , width = 6) 
