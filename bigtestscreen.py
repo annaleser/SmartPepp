@@ -42,9 +42,9 @@ myFontLarge = tkFont.Font(family = 'Helvetica', size = 80, weight = 'bold')
 
 def spin():
   GPIO.output(BIG_STEP, GPIO.HIGH)
-  time.sleep(b_delay)
+  time.sleep(delay)
   GPIO.output(BIG_STEP, GPIO.LOW)
-  time.sleep(b_delay)
+  time.sleep(delay)
 
 p = Process(target=spin)
 
