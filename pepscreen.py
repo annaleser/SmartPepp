@@ -10,6 +10,7 @@ import datetime
 #import urllib
 import json
 import os
+from multiprocessing import *
 
 #Raspberry Pi set up
 GPIO.setmode(GPIO.BOARD)
@@ -63,9 +64,13 @@ myFontLarge = tkFont.Font(family = 'Helvetica', size = 80, weight = 'bold')
 def sevenProgram():
   print("7")
 
+def ten():
+  print("10")
+
 #10 inch function
 def tenProgram():
-  print("10")
+  global t = Process(target=ten)
+  t.start()
 
 #12 inch function
 def twelveProgram():
@@ -91,6 +96,7 @@ def fourteenProgram():
 #Stop function
 def stop():
   p.stop()
+  t.stop()
   GPIO.output(rpwm, GPIO.LOW)
   GPIO.output(lpwm,GPIO.LOW)
   GPIO.output(BIG_STEP, GPIO.LOW)
