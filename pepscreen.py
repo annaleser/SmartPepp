@@ -97,7 +97,7 @@ def fourteenProgram():
 #Stop function
 def stop():
   p.stop()
-  t.stop()
+  t.terminate()
   GPIO.output(rpwm, GPIO.LOW)
   GPIO.output(lpwm,GPIO.LOW)
   GPIO.output(BIG_STEP, GPIO.LOW)
