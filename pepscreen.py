@@ -13,6 +13,7 @@ import os
 
 #Raspberry Pi set up
 GPIO.setmode(GPIO.BOARD)
+GPIO.setwarnings(False)
 
 #Motor set up
 #Rotation and delay variables
@@ -104,6 +105,7 @@ twelveButton.place(x=406, y=0)
 
 tenButton  = Button(screen, text = "10 inch", font = myFont, bg = "lightgreen", command = tenProgram, height = 2 , width = 6) 
 tenButton.place(x=203, y=0)
+tenButton.bind("<ButtonRelease-1>",tenProgram)
 
 sevenButton  = Button(screen, text = "7 inch", font = myFont, bg = "lightgreen", command = sevenProgram, height = 2 , width = 6) 
 sevenButton.place(x=0, y=0)
