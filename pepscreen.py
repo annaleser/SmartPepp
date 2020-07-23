@@ -104,8 +104,8 @@ twelveButton  = Button(screen, text = "12 inch", font = myFont, bg = "lightgreen
 twelveButton.place(x=406, y=0)
 
 tenButton  = Button(screen, text = "10 inch", font = myFont, bg = "lightgreen", height = 2 , width = 6) 
-tenButton.place(x=203, y=0)
-tenButton.bind("<ButtonRelease-1>",tenProgram)
+tenButton.bind("ButtonRelease-1",tenProgram)
+tenButton.pack()
 
 sevenButton  = Button(screen, text = "7 inch", font = myFont, bg = "lightgreen", command = sevenProgram, height = 2 , width = 6) 
 sevenButton.place(x=0, y=0)
