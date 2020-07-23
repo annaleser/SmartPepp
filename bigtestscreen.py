@@ -49,7 +49,7 @@ p = Process(spin)
 
 #spin function
 def spinProgram():
-  p.start
+  p.start()
 
 #Stop function
 def stop():
