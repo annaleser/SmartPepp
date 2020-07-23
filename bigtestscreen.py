@@ -45,7 +45,7 @@ def spin():
   GPIO.output(BIG_STEP, GPIO.LOW)
   time.sleep(b_delay)
 
-p = Process(spin)
+p = Process(target=spin)
 
 #spin function
 def spinProgram():
