@@ -65,7 +65,8 @@ def sevenProgram():
   print("7")
 
 def ten():
-  print("10")
+  for i in range(10):
+    print("10")
 
 #10 inch function
 def tenProgram():
