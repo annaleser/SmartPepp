@@ -44,7 +44,7 @@ def spinProgram():
     running = True
 
     # Create new thread
-    t = Thread(target = func)
+    t = threading.Thread(target=func)
     # Start new thread
     t.start()
     
