@@ -64,15 +64,9 @@ myFontLarge = tkFont.Font(family = 'Helvetica', size = 80, weight = 'bold')
 def sevenProgram():
   print("7")
 
-def ten():
-  for i in range(10):
-    print("10")
-    time.sleep(0.5)
-
 #10 inch function
 def tenProgram():
-  global t = Process(target=ten)
-  t.start()
+  print("10")
 
 #12 inch function
 def twelveProgram():
@@ -98,7 +92,6 @@ def fourteenProgram():
 #Stop function
 def stop():
   p.stop()
-  t.terminate()
   GPIO.output(rpwm, GPIO.LOW)
   GPIO.output(lpwm,GPIO.LOW)
   GPIO.output(BIG_STEP, GPIO.LOW)
