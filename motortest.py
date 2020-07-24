@@ -17,8 +17,8 @@ GPIO.setup(BIG_DIR, GPIO.OUT)
 GPIO.setup(BIG_STEP, GPIO.OUT)
 
 #Small stepper motor set up
-SMALL_DIR = 11   # Direction GPIO Pin
-SMALL_STEP = 12  # Step GPIO Pin
+SMALL_DIR = 16   # Direction GPIO Pin
+SMALL_STEP = 18  # Step GPIO Pin
 SMALL_SPR = 200   # Steps per Revolution
 
 GPIO.setup(SMALL_DIR, GPIO.OUT)
@@ -30,7 +30,7 @@ GPIO.setup(SMALL_STEP, GPIO.OUT)
 #delay = -2.6666666666666*(10**-15)*(i**4)+1.0666666666666*(10**-11)*(i**3)-1.333333333333*(10**-8)*(i**2)+5.333333333333*(10**-6)*i
 #delay = -4*(10**-15)*(i**4)+1.6*(10**-11)*(i**3)-2*(10**-8)*(i**2)+8*(10**-6)*i
 #Variables for steppers
-print("SMALL")
+print("SMALLL")
 
 #IN
 GPIO.output(SMALL_DIR, CCW)
