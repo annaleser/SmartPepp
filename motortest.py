@@ -17,8 +17,8 @@ GPIO.setup(BIG_DIR, GPIO.OUT)
 GPIO.setup(BIG_STEP, GPIO.OUT)
 
 #Small stepper motor set up
-SMALL_DIR = 18   # Direction GPIO Pin
-SMALL_STEP = 16  # Step GPIO Pin
+SMALL_DIR = 11   # Direction GPIO Pin
+SMALL_STEP = 12  # Step GPIO Pin
 SMALL_SPR = 200   # Steps per Revolution
 
 GPIO.setup(SMALL_DIR, GPIO.OUT)
