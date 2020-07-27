@@ -160,7 +160,22 @@ def slower():
   dc.changeDutyCycle(speed)
   rpms.delete(0)
   rmps.insert(0, str(speed))
-
+  
+#Stop everything
+def stopAll():
+  try:
+    dc.stop()
+  except:
+    pass
+  try:
+    stopSpinning()
+  except:
+    pass
+  try:
+    stopMoving()
+  except:
+    pass
+    
 #Button set up
 stopButton  = Button(screen, text = "STOP", font = myFontLarge, bg = "red", command = stopAll, height = 2 , width = 5) 
 stopButton.place(x=150, y=150)
