@@ -99,9 +99,9 @@ def inFunc():
     else:
       GPIO.output(SMALL_DIR, CCW)
       GPIO.output(SMALL_STEP, GPIO.HIGH)
-      time.sleep(30*s_delay)
+      time.sleep(25*s_delay)
       GPIO.output(SMALL_STEP, GPIO.LOW)
-      time.sleep(30*s_delay)
+      time.sleep(25*s_delay)
 
 def outProgram():
     global movingOut  #create global
