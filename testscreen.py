@@ -169,7 +169,16 @@ def slower():
     dc.start(speed)
   rpms.delete(1.0,END)
   rpms.insert(END, str(speed))
-  
+
+#Move to center
+def center():
+  for i in range(1000):
+      GPIO.output(SMALL_DIR, CW)
+      GPIO.output(SMALL_STEP, GPIO.HIGH)
+      time.sleep(s_delay)
+      GPIO.output(SMALL_STEP, GPIO.LOW)
+      time.sleep(s_delay)
+
 #Stop everything
 def stopAll():
   #All variables False
@@ -227,5 +236,8 @@ startSliceButton = Button(screen, text = "SLICE", font = myFont, bg = "aqua", co
 startSliceButton.place(x=175, y=375)
 stopSliceButton = Button(screen, text = "STOP", font = myFont, bg = "violet", command = stopSlicing, height = 1 , width = 4)
 stopSliceButton.place(x=320, y=375)
+
+centerButton = Button(screen, text = ".", font = myFont, bg = "gold", command = center, height = 1 , width = 1)
+centerButton.place(x=500, y=5)
 
 mainloop()
