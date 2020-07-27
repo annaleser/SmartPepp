@@ -193,12 +193,12 @@ stopSpinButton  = Button(screen, text = "STOP", font = myFont, bg = "orange", co
 stopSpinButton.place(x=5, y=160)
 
 rpms = Text(screen, font = myFont)
-rpms.place(x=300, y=5)
-rpms.insert(END,"25")
+rpms.place(x=250, y=5)
+rpms.insert(END,"25", width=1, height=1)
 fasterButton = Button(screen, text = "<", font = myFont, bg = "pink", command = faster, height = 1 , width = 2)
-fasterButton.place(x=200, y=5)
+fasterButton.place(x=175, y=5)
 slowerButton = Button(screen, text = ">", font = myFont, bg = "grey", command = slower, height = 1 , width = 2)
-slowerButton.place(x=400, y=5)
+slowerButton.place(x=325, y=5)
 
 startSliceButton = Button(screen, text = "SLICE", font = myFont, bg = "aqua", command = sliceProgram, height = 1 , width = 2)
 startSliceButton.place(x=200, y=300)
