@@ -20,8 +20,8 @@ GPIO.setwarnings(False)
 #Rotation and delay variables
 CW = 1     # Clockwise Rotation
 CCW = 0    # Counterclockwise Rotation
-b_delay = .00075
-s_delay = .00025
+b_delay = .00075 # Big stepper delay
+s_delay = .00025 # Small stepper delay
 
 #Big stepper motor set up
 BIG_DIR = 21   # Direction GPIO Pin
@@ -30,11 +30,18 @@ BIG_STEP = 22  # Step GPIO Pin
 GPIO.setup(BIG_DIR, GPIO.OUT)
 GPIO.setup(BIG_STEP, GPIO.OUT)
 
+#Small stepper motor set up
+SMALL_DIR = 16   # Direction GPIO Pin
+SMALL_STEP = 18  # Step GPIO Pin
+
+GPIO.setup(SMALL_DIR, GPIO.OUT)
+GPIO.setup(SMALL_STEP, GPIO.OUT)
+
 #TK screen set up
 screen = Tk()
 screen.overrideredirect(1)
 screen.geometry('800x480')
-screen.title("Big Spinner")
+screen.title("Test Screen")
 
 #Fonts for screen
 myFont = tkFont.Font(family = 'Helvetica', size = 36, weight = 'bold')
@@ -121,11 +128,11 @@ spinButton.place(x=150, y=0)
 stopButton  = Button(screen, text = "STOP", font = myFontLarge, bg = "red", command = stopSpinning, height = 2 , width = 6) 
 stopButton.place(x=150, y=225)
 
-inButton  = Button(screen, text = "IN", font = myFont, bg = "green", command = inProgram, height = 1 , width = 2) 
+inButton  = Button(screen, text = "IN", font = myFont, bg = "green", command = inProgram, height = 2 , width = 4) 
 inButton.place(x=0, y=0)
-stopButton  = Button(screen, text = "STOP", font = myFont, bg = "blue", command = stopMoving, height = 1 , width = 2) 
-stopButton.place(x=0, y=75)
-outButton  = Button(screen, text = "OUT", font = myFont, bg = "purple", command = outProgram, height = 1 , width = 2) 
-outButton.place(x=0, y=150)
+stopButton  = Button(screen, text = "STOP", font = myFont, bg = "blue", command = stopMoving, height = 2 , width = 4) 
+stopButton.place(x=0, y=100)
+outButton  = Button(screen, text = "OUT", font = myFont, bg = "purple", command = outProgram, height = 1 , width = 4) 
+outButton.place(x=0, y=200)
 
 mainloop()
