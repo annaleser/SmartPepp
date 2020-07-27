@@ -144,29 +144,27 @@ def sliceProgram():
 
 def stopSlicing():
   global dc
+  global slicing
+  slicing = False
   dc.stop()
   
 def faster():
   global speed
   speed = speed + 1
-  try:
+  if slicing == True:
     global dc
-    dc.changeDutyCycle(speed)
-    dc.start()
-  except:
-    pass
+    dc.stop()
+    dc.start(speed)
   rpms.delete(1.0,END)
   rpms.insert(END, str(speed))
   
 def slower():
   global speed
   speed = speed - 1
-  try:
+  if slicing == True:
     global dc
-    dc.changeDutyCycle(speed)
-    dc.start()
-  except:
-    pass
+    dc.stop()
+    dc.start(speed)
   rpms.delete(1.0,END)
   rpms.insert(END, str(speed))
   
