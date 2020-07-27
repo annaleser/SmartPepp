@@ -147,20 +147,26 @@ def stopSlicing():
   dc.stop()
   
 def faster():
-  global dc
   global speed
   speed = speed + 1
-  dc.changeDutyCycle(speed)
+  try:
+    global dc
+    dc.changeDutyCycle(speed)
+  except:
+    pass
   rpms.delete(0)
   rmps.insert(END, str(speed))
   
 def slower():
-  global dc
   global speed
   speed = speed - 1
-  dc.changeDutyCycle(speed)
+  try:
+    global dc
+    dc.changeDutyCycle(speed)
+  except:
+    pass
   rpms.delete(0)
-  rmps.insert(0, str(speed))
+  rmps.insert(END, str(speed))
   
 #Stop everything
 def stopAll():
