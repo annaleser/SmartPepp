@@ -172,8 +172,8 @@ def slower():
 
 #Move to center
 def center():
-  for i in range(1000):
-      GPIO.output(SMALL_DIR, CW)
+  for i in range(10000):
+      GPIO.output(SMALL_DIR, CCW)
       GPIO.output(SMALL_STEP, GPIO.HIGH)
       time.sleep(s_delay)
       GPIO.output(SMALL_STEP, GPIO.LOW)
