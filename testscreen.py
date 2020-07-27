@@ -148,18 +148,19 @@ def stopSlicing():
   
 def faster():
   global dc
-  dcSpeed.set(dcSpeed.get()+1)
-  dc.changeDutyCycle(dcSpeed.get())
+  global speed
+  speed = speed + 1
+  dc.changeDutyCycle(speed)
   rpms.delete(0)
-  rmps.insert(0, str(dcSpeed.get()))
+  rmps.insert(0, str(speed))
   
 def slower():
   global dc
-  cSpeed.set(dcSpeed.get()-1)
-  dc.changeDutyCycle(dcSpeed.get())
+  global speed
+  speed = speed - 1
+  dc.changeDutyCycle(speed)
   rpms.delete(0)
-  rmps.insert(0, str(dcSpeed.get()))
-  
+  rmps.insert(0, str(speed))
 
 #Button set up
 stopButton  = Button(screen, text = "STOP", font = myFontLarge, bg = "red", command = stopAll, height = 2 , width = 5) 
