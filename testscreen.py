@@ -195,7 +195,8 @@ stopSpinButton.place(x=450, y=240)
 
 rpms = Text(screen, font = myFont, width=2, height=1)
 rpms.place(x=270, y=5)
-global speed = 25
+global speed
+speed = 25
 rpms.insert(END, str(speed))
 fasterButton = Button(screen, text = "<", font = myFont, bg = "pink", command = faster, height = 1 , width = 2)
 fasterButton.place(x=185, y=5)
