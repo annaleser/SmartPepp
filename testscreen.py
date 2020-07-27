@@ -154,7 +154,7 @@ def faster():
     dc.changeDutyCycle(speed)
   except:
     pass
-  rpms.delete(0)
+  rpms.delete(1.0)
   rmps.insert(END, str(speed))
   
 def slower():
@@ -165,7 +165,7 @@ def slower():
     dc.changeDutyCycle(speed)
   except:
     pass
-  rpms.delete(0)
+  rpms.delete(1.0)
   rmps.insert(END, str(speed))
   
 #Stop everything
