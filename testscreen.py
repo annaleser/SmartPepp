@@ -177,7 +177,7 @@ def stopAll():
     pass
     
 #Button set up
-stopButton  = Button(screen, text = "STOP", font = myFontLarge, bg = "red", command = stopAll, height = 2 , width = 4) 
+stopButton  = Button(screen, text = "STOP", font = myFontLarge, bg = "red", command = stopAll, height = 2 , width = 5) 
 stopButton.place(x=150, y=100)
 
 inButton  = Button(screen, text = "IN", font = myFont, bg = "green", command = inProgram, height = 2 , width = 4) 
@@ -193,7 +193,7 @@ stopSpinButton  = Button(screen, text = "STOP", font = myFont, bg = "orange", co
 stopSpinButton.place(x=450, y=160)
 
 rpms = Text(screen, font = myFont, width=2, height=1)
-rpms.place(x=280, y=5)
+rpms.place(x=285, y=5)
 rpms.insert(END,"25")
 fasterButton = Button(screen, text = "<", font = myFont, bg = "pink", command = faster, height = 1 , width = 2)
 fasterButton.place(x=200, y=5)
@@ -201,8 +201,8 @@ slowerButton = Button(screen, text = ">", font = myFont, bg = "grey", command = 
 slowerButton.place(x=350, y=5)
 
 startSliceButton = Button(screen, text = "SLICE", font = myFont, bg = "aqua", command = sliceProgram, height = 1 , width = 4)
-startSliceButton.place(x=175, y=375)
+startSliceButton.place(x=200, y=375)
 stopSliceButton = Button(screen, text = "STOP", font = myFont, bg = "violet", command = stopSlicing, height = 1 , width = 4)
-stopSliceButton.place(x=275, y=375)
+stopSliceButton.place(x=325, y=375)
 
 mainloop()
