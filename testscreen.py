@@ -22,7 +22,6 @@ CW = 1     # Clockwise Rotation
 CCW = 0    # Counterclockwise Rotation
 b_delay = .00075 # Big stepper delay
 s_delay = .00025 # Small stepper delay
-dcSpeed = IntVar()
 
 #Big stepper motor set up
 BIG_DIR = 21   # Direction GPIO Pin
