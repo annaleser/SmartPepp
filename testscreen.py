@@ -206,6 +206,8 @@ rpms.place(x=270, y=5)
 global speed
 speed = 25
 rpms.insert(END, str(speed))
+global slicing
+slicing = False
 fasterButton = Button(screen, text = "<", font = myFont, bg = "pink", command = slower, height = 1 , width = 2)
 fasterButton.place(x=185, y=5)
 slowerButton = Button(screen, text = ">", font = myFont, bg = "grey", command = faster, height = 1 , width = 2)
