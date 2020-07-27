@@ -154,8 +154,8 @@ def faster():
     dc.changeDutyCycle(speed)
   except:
     pass
-  rpms.delete(1.0)
-  rmps.insert(END, str(speed))
+  rpms.delete(1.0,END)
+  rpms.insert(END, str(speed))
   
 def slower():
   global speed
@@ -165,8 +165,8 @@ def slower():
     dc.changeDutyCycle(speed)
   except:
     pass
-  rpms.delete(1.0)
-  rmps.insert(END, str(speed))
+  rpms.delete(1.0,END)
+  rpms.insert(END, str(speed))
   
 #Stop everything
 def stopAll():
