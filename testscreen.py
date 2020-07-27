@@ -129,10 +129,10 @@ stopButton  = Button(screen, text = "STOP", font = myFontLarge, bg = "red", comm
 stopButton.place(x=150, y=225)
 
 inButton  = Button(screen, text = "IN", font = myFont, bg = "green", command = inProgram, height = 2 , width = 4) 
-inButton.place(x=1, y=25)
+inButton.place(x=5, y=10)
 stopButton  = Button(screen, text = "STOP", font = myFont, bg = "blue", command = stopMoving, height = 2 , width = 4) 
-stopButton.place(x=1, y=175)
+stopButton.place(x=5, y=160)
 outButton  = Button(screen, text = "OUT", font = myFont, bg = "purple", command = outProgram, height = 2 , width = 4) 
-outButton.place(x=1, y=325)
+outButton.place(x=5, y=310)
 
 mainloop()
