@@ -20,8 +20,8 @@ GPIO.setwarnings(False)
 #Rotation and delay variables
 CW = 1     # Clockwise Rotation
 CCW = 0    # Counterclockwise Rotation
-b_delay = .00075 # Big stepper delay
-s_delay = .00025 # Small stepper delay
+b_delay = .0005 # Big stepper delay
+s_delay = .000075 # Small stepper delay
 
 #Big stepper motor set up
 BIG_DIR = 21   # Direction GPIO Pin
@@ -121,9 +121,9 @@ def outFunc():
     else:
       GPIO.output(SMALL_DIR, CW)
       GPIO.output(SMALL_STEP, GPIO.HIGH)
-      time.sleep(s_delay)
+      time.sleep(4*s_delay)
       GPIO.output(SMALL_STEP, GPIO.LOW)
-      time.sleep(s_delay)
+      time.sleep(4*s_delay)
 
 def stopMoving():
   global movingIn
