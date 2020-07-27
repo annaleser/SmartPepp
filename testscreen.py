@@ -54,7 +54,7 @@ screen.title("Test Screen")
 
 #Fonts for screen
 myFont = tkFont.Font(family = 'Helvetica', size = 36, weight = 'bold')
-myFontLarge = tkFont.Font(family = 'Helvetica', size = 80, weight = 'bold')
+myFontLarge = tkFont.Font(family = 'Helvetica', size = 70, weight = 'bold')
 
 #Functions for starting and stopping spin
 def spinProgram():
@@ -177,7 +177,7 @@ def stopAll():
     pass
     
 #Button set up
-stopButton  = Button(screen, text = "STOP", font = myFontLarge, bg = "red", command = stopAll, height = 2 , width = 5) 
+stopButton  = Button(screen, text = "STOP", font = myFontLarge, bg = "red", command = stopAll, height = 2 , width = 4) 
 stopButton.place(x=150, y=100)
 
 inButton  = Button(screen, text = "IN", font = myFont, bg = "green", command = inProgram, height = 2 , width = 4) 
@@ -188,9 +188,9 @@ outButton  = Button(screen, text = "OUT", font = myFont, bg = "purple", command 
 outButton.place(x=5, y=310)
 
 spinButton  = Button(screen, text = "SPIN", font = myFont, bg = "yellow", command = spinProgram, height = 2 , width = 4) 
-spinButton.place(x=450, y=200)
+spinButton.place(x=450, y=100)
 stopSpinButton  = Button(screen, text = "STOP", font = myFont, bg = "orange", command = stopSpinning, height = 2 , width = 4) 
-stopSpinButton.place(x=450, y=160)
+stopSpinButton.place(x=450, y=200)
 
 rpms = Text(screen, font = myFont, width=2, height=1)
 rpms.place(x=285, y=5)
@@ -201,7 +201,7 @@ slowerButton = Button(screen, text = ">", font = myFont, bg = "grey", command = 
 slowerButton.place(x=350, y=5)
 
 startSliceButton = Button(screen, text = "SLICE", font = myFont, bg = "aqua", command = sliceProgram, height = 1 , width = 4)
-startSliceButton.place(x=200, y=375)
+startSliceButton.place(x=180, y=375)
 stopSliceButton = Button(screen, text = "STOP", font = myFont, bg = "violet", command = stopSlicing, height = 1 , width = 4)
 stopSliceButton.place(x=325, y=375)
 
