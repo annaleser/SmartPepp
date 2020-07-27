@@ -97,7 +97,7 @@ def inFunc():
     if movingIn == False:
       break
     else:
-      GPIO.output(SMALL_DIR, CW)
+      GPIO.output(SMALL_DIR, CCW)
       GPIO.output(SMALL_STEP, GPIO.HIGH)
       time.sleep(s_delay)
       GPIO.output(SMALL_STEP, GPIO.LOW)
@@ -119,7 +119,7 @@ def outFunc():
     if movingOut == False:
       break
     else:
-      GPIO.output(SMALL_DIR, CCW)
+      GPIO.output(SMALL_DIR, CW)
       GPIO.output(SMALL_STEP, GPIO.HIGH)
       time.sleep(s_delay)
       GPIO.output(SMALL_STEP, GPIO.LOW)
@@ -152,6 +152,7 @@ def faster():
   try:
     global dc
     dc.changeDutyCycle(speed)
+    dc.start()
   except:
     pass
   rpms.delete(1.0,END)
@@ -163,6 +164,7 @@ def slower():
   try:
     global dc
     dc.changeDutyCycle(speed)
+    dc.start()
   except:
     pass
   rpms.delete(1.0,END)
@@ -204,9 +206,9 @@ rpms.place(x=270, y=5)
 global speed
 speed = 25
 rpms.insert(END, str(speed))
-fasterButton = Button(screen, text = "<", font = myFont, bg = "pink", command = faster, height = 1 , width = 2)
+fasterButton = Button(screen, text = "<", font = myFont, bg = "pink", command = slower, height = 1 , width = 2)
 fasterButton.place(x=185, y=5)
-slowerButton = Button(screen, text = ">", font = myFont, bg = "grey", command = slower, height = 1 , width = 2)
+slowerButton = Button(screen, text = ">", font = myFont, bg = "grey", command = faster, height = 1 , width = 2)
 slowerButton.place(x=335, y=5)
 
 startSliceButton = Button(screen, text = "SLICE", font = myFont, bg = "aqua", command = sliceProgram, height = 1 , width = 4)
