@@ -151,7 +151,7 @@ def faster():
   speed = speed + 1
   dc.changeDutyCycle(speed)
   rpms.delete(0)
-  rmps.insert(0, str(speed))
+  rmps.insert(END, str(speed))
   
 def slower():
   global dc
@@ -194,7 +194,7 @@ stopSpinButton.place(x=5, y=160)
 
 rpms = Text(screen, font = myFont)
 rpms.place(x=300, y=5)
-rpms.insert(0,"25")
+rpms.insert(END,"25")
 fasterButton = Button(screen, text = "<", font = myFont, bg = "pink", command = faster, height = 1 , width = 2)
 fasterButton.place(x=200, y=5)
 slowerButton = Button(screen, text = ">", font = myFont, bg = "grey", command = slower, height = 1 , width = 2)
