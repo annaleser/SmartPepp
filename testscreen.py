@@ -202,7 +202,7 @@ slowerButton.place(x=375, y=5)
 
 startSliceButton = Button(screen, text = "SLICE", font = myFont, bg = "aqua", command = sliceProgram, height = 1 , width = 4)
 startSliceButton.place(x=200, y=375)
-stopSliceButton = Button(screen, text = "STOP", font = myFont, bg = "light purple", command = stopSlicing, height = 1 , width = 4)
+stopSliceButton = Button(screen, text = "STOP", font = myFont, bg = "violet", command = stopSlicing, height = 1 , width = 4)
 stopSliceButton.place(x=400, y=375)
 
 mainloop()
