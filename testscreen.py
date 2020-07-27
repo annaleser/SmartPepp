@@ -178,7 +178,7 @@ def stopAll():
     
 #Button set up
 stopButton  = Button(screen, text = "STOP", font = myFontLarge, bg = "red", command = stopAll, height = 2 , width = 5) 
-stopButton.place(x=180, y=110)
+stopButton.place(x=175, y=110)
 
 inButton  = Button(screen, text = "IN", font = myFont, bg = "green", command = inProgram, height = 2 , width = 4) 
 inButton.place(x=5, y=10)
@@ -201,8 +201,8 @@ slowerButton = Button(screen, text = ">", font = myFont, bg = "grey", command = 
 slowerButton.place(x=335, y=5)
 
 startSliceButton = Button(screen, text = "SLICE", font = myFont, bg = "aqua", command = sliceProgram, height = 1 , width = 4)
-startSliceButton.place(x=180, y=375)
+startSliceButton.place(x=175, y=375)
 stopSliceButton = Button(screen, text = "STOP", font = myFont, bg = "violet", command = stopSlicing, height = 1 , width = 4)
-stopSliceButton.place(x=325, y=375)
+stopSliceButton.place(x=320, y=375)
 
 mainloop()
