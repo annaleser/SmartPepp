@@ -22,6 +22,7 @@ CW = 1     # Clockwise Rotation
 CCW = 0    # Counterclockwise Rotation
 b_delay = .00075 # Big stepper delay
 s_delay = .00025 # Small stepper delay
+dcSpeed = intVar()
 
 #Big stepper motor set up
 BIG_DIR = 21   # Direction GPIO Pin
@@ -36,6 +37,15 @@ SMALL_STEP = 18  # Step GPIO Pin
 
 GPIO.setup(SMALL_DIR, GPIO.OUT)
 GPIO.setup(SMALL_STEP, GPIO.OUT)
+
+#DC motor set up
+rpwm = 5
+lpwm = 7
+
+GPIO.setup(rpwm,GPIO.OUT)
+GPIO.setup(lpwm,GPIO.OUT)
+GPIO.output(rpwm, GPIO.LOW)
+GPIO.output(lpwm,GPIO.LOW)
 
 #TK screen set up
 screen = Tk()
@@ -121,18 +131,62 @@ def stopMoving():
   global movingOut
   movingIn = False
   movingOut = False
+  
+#Functions for slicing
+def sliceProgram():
+    global slicing  #create global
+    slicing = True
+
+    # Create rpm for dc
+    global dc
+    dc = GPIO.PWM(rpwm, 50)
+    dc.start(25)
+
+def stopSlicing():
+  global dc
+  dc.stop()
+  
+def faster():
+  global dc
+  dcSpeed.set(dcSpeed.get()+1)
+  dc.changeDutyCycle(dcSpeed.get())
+  rpms.delete(0)
+  rmps.insert(0, str(dcSpeed.get()))
+  
+def slower():
+  global dc
+  cSpeed.set(dcSpeed.get()-1)
+  dc.changeDutyCycle(dcSpeed.get())
+  rpms.delete(0)
+  rmps.insert(0, str(dcSpeed.get()))
+  
 
 #Button set up
-spinButton  = Button(screen, text = "SPIN", font = myFontLarge, bg = "yellow", command = spinProgram, height = 2 , width = 5) 
-spinButton.place(x=150, y=0)
-stopButton  = Button(screen, text = "STOP", font = myFontLarge, bg = "red", command = stopSpinning, height = 2 , width = 5) 
-stopButton.place(x=150, y=225)
+stopButton  = Button(screen, text = "STOP", font = myFontLarge, bg = "red", command = stopAll, height = 2 , width = 5) 
+stopButton.place(x=150, y=150)
 
 inButton  = Button(screen, text = "IN", font = myFont, bg = "green", command = inProgram, height = 2 , width = 4) 
 inButton.place(x=5, y=10)
-stopButton  = Button(screen, text = "STOP", font = myFont, bg = "blue", command = stopMoving, height = 2 , width = 4) 
-stopButton.place(x=5, y=160)
+stopMoveButton  = Button(screen, text = "STOP", font = myFont, bg = "blue", command = stopMoving, height = 2 , width = 4) 
+stopMoveButton.place(x=5, y=160)
 outButton  = Button(screen, text = "OUT", font = myFont, bg = "purple", command = outProgram, height = 2 , width = 4) 
 outButton.place(x=5, y=310)
+
+spinButton  = Button(screen, text = "SPIN", font = myFontLarge, bg = "yellow", command = spinProgram, height = 2 , width = 4) 
+spinButton.place(x=700, y=200)
+stopSpinButton  = Button(screen, text = "STOP", font = myFont, bg = "orange", command = stopSpinning, height = 2 , width = 4) 
+stopSpinButton.place(x=5, y=160)
+
+rpms = Text(screen, text = "25", font = myFont)
+rpms.place(x=300, y=5)
+fasterButton = Button(screen, text = "<", font = myFont, bg = "pink", command = faster, height = 1 , width = 2)
+fasterButton.place(x=200, y=5)
+slowerButton = Button(screen, text = ">", font = myFont, bg = "grey", command = slower, height = 1 , width = 2)
+slowerButton.place(x=400, y=5)
+
+startSliceButton = Button(screen, text = "SLICE", font = myFont, bg = "aqua", command = sliceProgram, height = 1 , width = 2)
+startSliceButton.place(x=200, y=300)
+stopSliceButton = Button(screen, text = "STOP", font = myFont, bg = "lavender", command = stopSlicing, height = 1 , width = 2)
+stopSliceButton.place(x=400, y=300)
 
 mainloop()
