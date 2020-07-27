@@ -172,6 +172,16 @@ def slower():
   
 #Stop everything
 def stopAll():
+  #All variables False
+  global slicing
+  slicing = False
+  global movingIn
+  global movingOut
+  movingIn = False
+  movingOut = False
+  global spinning
+  spinning = False
+  #All motors stop
   try:
     dc.stop()
   except:
