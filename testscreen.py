@@ -76,7 +76,7 @@ def inProgram():
     global movingIn  #create global
     movingIn = True
     global movingOut
-    movingout = False
+    movingOut = False
 
     # Create new thread
     moveIn = threading.Thread(target=inFunc)
