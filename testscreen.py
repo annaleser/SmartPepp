@@ -138,8 +138,10 @@ def sliceProgram():
 
     # Create rpm for dc
     global dc
+    global speed
+    speed = 25
     dc = GPIO.PWM(rpwm, 50)
-    dc.start(25)
+    dc.start(speed)
 
 def stopSlicing():
   global dc
