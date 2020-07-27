@@ -123,16 +123,16 @@ def stopMoving():
   movingOut = False
 
 #Button set up
-spinButton  = Button(screen, text = "SPIN", font = myFontLarge, bg = "yellow", command = spinProgram, height = 2 , width = 6) 
-spinButton.place(x=125, y=0)
-stopButton  = Button(screen, text = "STOP", font = myFontLarge, bg = "red", command = stopSpinning, height = 2 , width = 6) 
-stopButton.place(x=125, y=225)
+spinButton  = Button(screen, text = "SPIN", font = myFontLarge, bg = "yellow", command = spinProgram, height = 2 , width = 5) 
+spinButton.place(x=100, y=0)
+stopButton  = Button(screen, text = "STOP", font = myFontLarge, bg = "red", command = stopSpinning, height = 2 , width = 5) 
+stopButton.place(x=100, y=225)
 
 inButton  = Button(screen, text = "IN", font = myFont, bg = "green", command = inProgram, height = 2 , width = 4) 
-inButton.place(x=10, y=0)
+inButton.place(x=1, y=0)
 stopButton  = Button(screen, text = "STOP", font = myFont, bg = "blue", command = stopMoving, height = 2 , width = 4) 
-stopButton.place(x=10, y=200)
+stopButton.place(x=1, y=150)
 outButton  = Button(screen, text = "OUT", font = myFont, bg = "purple", command = outProgram, height = 2 , width = 4) 
-outButton.place(x=10, y=400)
+outButton.place(x=1, y=300)
 
 mainloop()
