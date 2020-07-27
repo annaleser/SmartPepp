@@ -177,8 +177,8 @@ def stopAll():
     pass
     
 #Button set up
-stopButton  = Button(screen, text = "STOP", font = myFontLarge, bg = "red", command = stopAll, height = 2 , width = 4) 
-stopButton.place(x=170, y=100)
+stopButton  = Button(screen, text = "STOP", font = myFontLarge, bg = "red", command = stopAll, height = 2 , width = 5) 
+stopButton.place(x=180, y=110)
 
 inButton  = Button(screen, text = "IN", font = myFont, bg = "green", command = inProgram, height = 2 , width = 4) 
 inButton.place(x=5, y=10)
@@ -188,9 +188,9 @@ outButton  = Button(screen, text = "OUT", font = myFont, bg = "purple", command 
 outButton.place(x=5, y=310)
 
 spinButton  = Button(screen, text = "SPIN", font = myFont, bg = "yellow", command = spinProgram, height = 2 , width = 4) 
-spinButton.place(x=450, y=75)
+spinButton.place(x=450, y=85)
 stopSpinButton  = Button(screen, text = "STOP", font = myFont, bg = "orange", command = stopSpinning, height = 2 , width = 4) 
-stopSpinButton.place(x=450, y=250)
+stopSpinButton.place(x=450, y=240)
 
 rpms = Text(screen, font = myFont, width=2, height=1)
 rpms.place(x=270, y=5)
