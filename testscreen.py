@@ -98,7 +98,7 @@ def inFunc():
     if movingIn == False:
       break
     else:
-      num = -4*(10**-15)*((num/1000.0)**4)+1.6*(10**-11)*((num/1000.0)**3)-2*(10**-8)*((num/1000.0)**2)+8*(10**-6)*(num/1000.0)
+      num = -4*(10**-15)*((num)**4)+1.6*(10**-11)*((num)**3)-2*(10**-8)*((num)**2)+8*(10**-6)*(num)
       GPIO.output(SMALL_DIR, CCW)
       GPIO.output(SMALL_STEP, GPIO.HIGH)
       time.sleep(num)
