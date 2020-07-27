@@ -150,6 +150,7 @@ def stopSlicing():
   
 def faster():
   global speed
+  global slicing
   speed = speed + 1
   if slicing == True:
     global dc
@@ -160,6 +161,7 @@ def faster():
   
 def slower():
   global speed
+  global slicing
   speed = speed - 1
   if slicing == True:
     global dc
