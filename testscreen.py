@@ -93,15 +93,17 @@ def inProgram():
     moveIn.start()
     
 def inFunc():
+  num = 1
   while movingIn:
     if movingIn == False:
       break
     else:
+      num = -4*(10**-15)*((num/1000.0)**4)+1.6*(10**-11)*((num/1000.0)**3)-2*(10**-8)*((num/1000.0)**2)+8*(10**-6)*(num/1000.0)
       GPIO.output(SMALL_DIR, CCW)
       GPIO.output(SMALL_STEP, GPIO.HIGH)
-      time.sleep(3*s_delay)
+      time.sleep(num)
       GPIO.output(SMALL_STEP, GPIO.LOW)
-      time.sleep(3*s_delay)
+      time.sleep(num)
 
 def outProgram():
     global movingOut  #create global
