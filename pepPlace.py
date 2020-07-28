@@ -109,7 +109,7 @@ def spinFunc(m,b):
     if spinning == False:
       break
     else:
-      delay = m*(startTime-time.time())+b
+      delay = m*(time.time()-startTime)+b
       GPIO.output(BIG_STEP, GPIO.HIGH)
       time.sleep(delay)
       GPIO.output(BIG_STEP, GPIO.LOW)
@@ -133,7 +133,7 @@ def moveFunc(m,b):
     if movingIn == False:
       break
     else:
-      delay = m*(startTime-time.time())+b
+      delay = m*(time.time()-startTime)+b
       GPIO.output(SMALL_STEP, GPIO.HIGH)
       time.sleep(delay)
       GPIO.output(SMALL_STEP, GPIO.LOW)
