@@ -129,8 +129,8 @@ def move(direction,m,b):
   move.start()
     
 def moveFunc(m,b):
-  while movingIn:
-    if movingIn == False:
+  while moving:
+    if moving == False:
       break
     else:
       delay = m*(time.time()-startTime)+b
