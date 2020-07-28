@@ -102,7 +102,6 @@ def pepPizza(mSpin,bSpin,mMove,bMove,totalTime):
   move(IN,mMove,bMove)
   time.sleep(totalTime)
   stopAll()
-  isRunning = False
 
 # Slice functions
 def slice(speed):
@@ -195,6 +194,8 @@ def stopAll():
     stopMoving()
   except:
     pass
+  global isRunning
+  isRunning = False
 
 # Button set up
 fourteenButton  = Button(screen, text = "14 in.", font = myFont, bg = "lightgreen", command = fourteenProgram, height = 2 , width = 4) 
