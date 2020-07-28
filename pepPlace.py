@@ -3,8 +3,8 @@ import tkFont
 import RPi.GPIO as GPIO
 import time
 import threading
+import sys
 #import datetime
-#import sys
 #import pyfireconnect
 #from firebase import firebase
 #import urllib
@@ -65,7 +65,7 @@ def sevenProgram():
 # 10 inch function
 def tenProgram():
   print("10")
-  ten = threading.Thread(target=pepPizza, args=(0.000,0.000,0.000,0.000,15.48387097))
+  ten = threading.Thread(target=pepPizza, args=(0.0000484,0.0004287,0.0000895,0.0003607,15.48387097))
   ten.start()
 
 # 12 inch function
@@ -77,7 +77,7 @@ def twelveProgram():
 # 14 inch function
 def fourteenProgram():
   print("14")
-  fourteen = threading.Thread(target=pepPizza, args=(0.000,0.000,0.000,0.000,30.96774194))
+  fourteen = threading.Thread(target=pepPizza, args=(0.000055,0.0003347,0.0000661,0.0004185,30.96774194))
   fourteen.start()
 
 # Pep pizza function given 2 linear functions, mx+b
