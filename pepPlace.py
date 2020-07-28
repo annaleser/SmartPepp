@@ -60,6 +60,7 @@ myFontLarge = tkFont.Font(family = 'Helvetica', size = 80, weight = 'bold')
 # 7 inch function
 def sevenProgram():
   print("7")
+  slice(41)
 
 # 10 inch function
 def tenProgram():
@@ -181,13 +182,13 @@ def stopAll():
 
 # Button set up
 fourteenButton  = Button(screen, text = "14 inch", font = myFont, bg = "lightgreen", command = fourteenProgram, height = 2 , width = 6) 
-fourteenButton.place(x=610, y=0)
+fourteenButton.place(x=450, y=0)
 
 twelveButton  = Button(screen, text = "12 inch", font = myFont, bg = "lightgreen", command = twelveProgram, height = 2 , width = 6) 
-twelveButton.place(x=406, y=0)
+twelveButton.place(x=300, y=0)
 
 tenButton  = Button(screen, text = "10 inch", font = myFont, bg = "lightgreen", command = tenProgram, height = 2 , width = 6) 
-tenButton.place(x=203, y=0)
+tenButton.place(x=150, y=0)
 
 sevenButton  = Button(screen, text = "7 inch", font = myFont, bg = "lightgreen", command = sevenProgram, height = 2 , width = 6) 
 sevenButton.place(x=0, y=0)
