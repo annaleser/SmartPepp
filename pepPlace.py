@@ -124,7 +124,7 @@ def move(direction,m,b):
   GPIO.output(SMALL_DIR, direction)
 
   # Create new thread
-  move = threading.Thread(target=moveFunc, args=(delay))
+  move = threading.Thread(target=moveFunc, args=(m,b))
   # Start new thread
   move.start()
     
