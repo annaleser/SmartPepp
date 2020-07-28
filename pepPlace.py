@@ -59,7 +59,7 @@ myFontLarge = tkFont.Font(family = 'Helvetica', size = 80, weight = 'bold')
 # 7 inch function
 def sevenProgram():
   print("7")
-  seven = threading.Thread(target=pepPizza, args=(0.000,0.000,0.000,0.000,7.419354839))
+  seven = threading.Thread(target=pepPizza, args=(0.000075,0.0003189,0.0001721,0.0002366,7.419354839))
   seven.start()
 
 # 10 inch function
