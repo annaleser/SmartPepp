@@ -56,44 +56,56 @@ screen.title("Sm^rt Pepp")
 myFont = tkFont.Font(family = 'Helvetica', size = 36, weight = 'bold')
 myFontLarge = tkFont.Font(family = 'Helvetica', size = 80, weight = 'bold')
 
+# Not running at start
+global isRunning
+isRunning = False
+
 # 7 inch function
 def sevenProgram():
-  print("7")
-  seven = threading.Thread(target=pepPizza, args=(0.000075,0.0003189,0.0001721,0.0002366,7.419354839))
-  seven.start()
+  global isRunning
+  if(isRunning == False):
+    print("7")
+    seven = threading.Thread(target=pepPizza, args=(0.000075,0.0003189,0.0001721,0.0002366,7.419354839))
+    seven.start()
 
 # 10 inch function
 def tenProgram():
-  print("10")
-  ten = threading.Thread(target=pepPizza, args=(0.0000484,0.0004287,0.0000895,0.0003607,15.48387097))
-  ten.start()
+  global isRunning
+  if(isRunning == False):
+    print("10")
+    ten = threading.Thread(target=pepPizza, args=(0.0000484,0.0004287,0.0000895,0.0003607,15.48387097))
+    ten.start()
 
 # 12 inch function
 def twelveProgram():
-  print("12")
-  twelve = threading.Thread(target=pepPizza, args=(0.0000603,0.0003444,0.0000803,0.0003751,22.58064516))
-  twelve.start()
+  global isRunning
+  if(isRunning == False):
+    print("12")
+    twelve = threading.Thread(target=pepPizza, args=(0.0000603,0.0003444,0.0000803,0.0003751,22.58064516))
+    twelve.start()
 
 # 14 inch function
 def fourteenProgram():
-  print("14")
-  fourteen = threading.Thread(target=pepPizza, args=(0.000055,0.0003347,0.0000661,0.0004185,30.96774194))
-  fourteen.start()
+  global isRunning
+  if(isRunning == False):
+    print("14")
+    fourteen = threading.Thread(target=pepPizza, args=(0.000055,0.0003347,0.0000661,0.0004185,30.96774194))
+    fourteen.start()
 
 # Pep pizza function given 2 linear functions, mx+b
 def pepPizza(mSpin,bSpin,mMove,bMove,totalTime):
+  global isRunning
+  isRunning = True
   center()
   slice(41)
   spin(mSpin,bSpin)
   move(IN,mMove,bMove)
   time.sleep(totalTime)
   stopAll()
+  isRunning = False
 
 # Slice functions
 def slice(speed):
-    global slicing
-    slicing = True
-
     # Create rpm for dc
     global dc
     dc.start(speed)
@@ -160,8 +172,6 @@ def center():
 # Stop functions
 def stopSlicing():
   global dc
-  global slicing
-  slicing = False
   dc.stop()
 
 def stopSpinning():
@@ -174,7 +184,7 @@ def stopMoving():
 
 def stopAll():
   try:
-    dc.stop()
+    stopSlicing()
   except:
     pass
   try:
