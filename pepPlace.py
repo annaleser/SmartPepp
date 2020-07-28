@@ -69,7 +69,7 @@ def tenProgram():
 # 12 inch function
 def twelveProgram():
   print("12")
-  twelve = threading.Thread(target=pepPizza, args=(0.0010318,0.0103844,0.0000803,0.0004948))
+  twelve = threading.Thread(target=pepPizza, args=(0.0010318,0.007872,0.0000803,0.0003751))
   twelve.start()
 
 # 14 inch function
@@ -181,19 +181,19 @@ def stopAll():
     pass
 
 # Button set up
-fourteenButton  = Button(screen, text = "14 inch", font = myFont, bg = "lightgreen", command = fourteenProgram, height = 2 , width = 6) 
+fourteenButton  = Button(screen, text = "14 inch", font = myFont, bg = "lightgreen", command = fourteenProgram, height = 2 , width = 4) 
 fourteenButton.place(x=450, y=0)
 
-twelveButton  = Button(screen, text = "12 inch", font = myFont, bg = "lightgreen", command = twelveProgram, height = 2 , width = 6) 
+twelveButton  = Button(screen, text = "12 inch", font = myFont, bg = "lightgreen", command = twelveProgram, height = 2 , width = 4) 
 twelveButton.place(x=300, y=0)
 
-tenButton  = Button(screen, text = "10 inch", font = myFont, bg = "lightgreen", command = tenProgram, height = 2 , width = 6) 
+tenButton  = Button(screen, text = "10 inch", font = myFont, bg = "lightgreen", command = tenProgram, height = 2 , width = 4) 
 tenButton.place(x=150, y=0)
 
-sevenButton  = Button(screen, text = "7 inch", font = myFont, bg = "lightgreen", command = sevenProgram, height = 2 , width = 6) 
+sevenButton  = Button(screen, text = "7 inch", font = myFont, bg = "lightgreen", command = sevenProgram, height = 2 , width = 4) 
 sevenButton.place(x=0, y=0)
 
-stopButton  = Button(screen, text = "STOP", font = myFontLarge, bg = "red", command = stopAll, height = 2 , width = 8) 
+stopButton  = Button(screen, text = "STOP", font = myFontLarge, bg = "red", command = stopAll, height = 2 , width = 6) 
 stopButton.place(x=150, y=175)
 
 mainloop()
