@@ -2,13 +2,14 @@ from Tkinter import *
 import tkFont
 import RPi.GPIO as GPIO
 import time
-import datetime
+import threading
+#import datetime
+#import sys
 #import pyfireconnect
 #from firebase import firebase
 #import urllib
 #import json
 #import os
-import threading
 
 # Raspberry Pi set up
 GPIO.setmode(GPIO.BOARD)
@@ -58,39 +59,39 @@ myFontLarge = tkFont.Font(family = 'Helvetica', size = 80, weight = 'bold')
 # 7 inch function
 def sevenProgram():
   print("7")
-  seven = threading.Thread(target=pepPizza, args=(0.000,0.000,0.000,0.000))
+  seven = threading.Thread(target=pepPizza, args=(0.000,0.000,0.000,0.000,7.419354839))
   seven.start()
 
 # 10 inch function
 def tenProgram():
   print("10")
-  ten = threading.Thread(target=pepPizza, args=(0.000,0.000,0.000,0.000))
+  ten = threading.Thread(target=pepPizza, args=(0.000,0.000,0.000,0.000,15.48387097))
   ten.start()
 
 # 12 inch function
 def twelveProgram():
   print("12")
-  twelve = threading.Thread(target=pepPizza, args=(0.0000603,0.0003444,0.0000803,0.0003751))
+  twelve = threading.Thread(target=pepPizza, args=(0.0000603,0.0003444,0.0000803,0.0003751,22.58064516))
   twelve.start()
 
 # 14 inch function
 def fourteenProgram():
   print("14")
-  fourteen = threading.Thread(target=pepPizza, args=(0.000,0.000,0.000,0.000))
+  fourteen = threading.Thread(target=pepPizza, args=(0.000,0.000,0.000,0.000,30.96774194))
   fourteen.start()
 
-# Pep pizza function
-def pepPizza(mSpin,bSpin,mMove,bMove):
+# Pep pizza function given 2 linear functions, mx+b
+def pepPizza(mSpin,bSpin,mMove,bMove,totalTime):
   center()
   slice(41)
   spin(mSpin,bSpin)
   move(IN,mMove,bMove)
-  time.sleep(29.78723404)
+  time.sleep(totalTime)
   stopAll()
 
 # Slice functions
 def slice(speed):
-    global slicing  #create global
+    global slicing
     slicing = True
 
     # Create rpm for dc
@@ -99,7 +100,7 @@ def slice(speed):
 
 # Spin functions
 def spin(m,b):
-    global spinning  #create global
+    global spinning
     spinning = True
 
     # Create new thread
@@ -143,7 +144,7 @@ def moveFunc(m,b):
       GPIO.output(SMALL_STEP, GPIO.LOW)
       time.sleep(delay)
 
-#Move to center
+# Move to center
 def center():
   for i in range(10000):
       GPIO.output(SMALL_DIR, IN)
@@ -151,6 +152,8 @@ def center():
       time.sleep(.000075)
       GPIO.output(SMALL_STEP, GPIO.LOW)
       time.sleep(.000075)
+  
+  # Create start time var
   global startTime
   startTime = time.time()
 
