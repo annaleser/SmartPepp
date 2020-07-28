@@ -181,16 +181,16 @@ def stopAll():
     pass
 
 # Button set up
-fourteenButton  = Button(screen, text = "14 in.", font = myFont, bg = "lightgreen", command = fourteenProgram, height = 2 , width = 5) 
+fourteenButton  = Button(screen, text = "14 in.", font = myFont, bg = "lightgreen", command = fourteenProgram, height = 2 , width = 4) 
 fourteenButton.place(x=450, y=0)
 
-twelveButton  = Button(screen, text = "12 in.", font = myFont, bg = "lightgreen", command = twelveProgram, height = 2 , width = 5) 
+twelveButton  = Button(screen, text = "12 in.", font = myFont, bg = "lightgreen", command = twelveProgram, height = 2 , width = 4) 
 twelveButton.place(x=300, y=0)
 
-tenButton  = Button(screen, text = "10 in.", font = myFont, bg = "lightgreen", command = tenProgram, height = 2 , width = 5) 
+tenButton  = Button(screen, text = "10 in.", font = myFont, bg = "lightgreen", command = tenProgram, height = 2 , width = 4) 
 tenButton.place(x=150, y=0)
 
-sevenButton  = Button(screen, text = "7 in.", font = myFont, bg = "lightgreen", command = sevenProgram, height = 2 , width = 5) 
+sevenButton  = Button(screen, text = "7 in.", font = myFont, bg = "lightgreen", command = sevenProgram, height = 2 , width = 4) 
 sevenButton.place(x=0, y=0)
 
 stopButton  = Button(screen, text = "STOP", font = myFontLarge, bg = "red", command = stopAll, height = 2 , width = 6) 
