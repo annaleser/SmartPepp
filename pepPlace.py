@@ -69,7 +69,7 @@ def tenProgram():
 # 12 inch function
 def twelveProgram():
   print("12")
-  twelve = threading.Thread(target=pepPizza, args=(0.0010318,0.007872,0.0000803,0.0003751))
+  twelve = threading.Thread(target=pepPizza, args=(0.0000603,0.0003444,0.0000803,0.0003751))
   twelve.start()
 
 # 14 inch function
