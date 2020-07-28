@@ -80,7 +80,7 @@ def pepPizza(mSpin,bSpin,mMove,bMove):
   center()
   slice(41)
   spin(mSpin,bSpin)
-  move(OUT,mMove,bMove)
+  move(IN,mMove,bMove)
   time.sleep(29.78723404)
   stopAll()
 
@@ -121,7 +121,7 @@ def move(direction,m,b):
   moving = True
     
   # Set direction to move
-  GPIO.output(SMALL_DIR, direciton)
+  GPIO.output(SMALL_DIR, direction)
 
   # Create new thread
   move = threading.Thread(target=moveFunc, args=(delay))
@@ -142,7 +142,7 @@ def moveFunc(m,b):
 #Move to center
 def center():
   for i in range(10000):
-      GPIO.output(SMALL_DIR, CCW)
+      GPIO.output(SMALL_DIR, IN)
       GPIO.output(SMALL_STEP, GPIO.HIGH)
       time.sleep(.000075)
       GPIO.output(SMALL_STEP, GPIO.LOW)
