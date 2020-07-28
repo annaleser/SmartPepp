@@ -2,14 +2,12 @@ from Tkinter import *
 import tkFont
 import RPi.GPIO as GPIO
 import time
-import sys
-#import serial
 import datetime
 #import pyfireconnect
 #from firebase import firebase
 #import urllib
-import json
-import os
+#import json
+#import os
 import threading
 
 # Raspberry Pi set up
@@ -60,11 +58,14 @@ myFontLarge = tkFont.Font(family = 'Helvetica', size = 80, weight = 'bold')
 # 7 inch function
 def sevenProgram():
   print("7")
-  slice(41)
+  seven = threading.Thread(target=pepPizza, args=(0.000,0.000,0.000,0.000))
+  seven.start()
 
 # 10 inch function
 def tenProgram():
   print("10")
+  ten = threading.Thread(target=pepPizza, args=(0.000,0.000,0.000,0.000))
+  ten.start()
 
 # 12 inch function
 def twelveProgram():
@@ -75,6 +76,8 @@ def twelveProgram():
 # 14 inch function
 def fourteenProgram():
   print("14")
+  fourteen = threading.Thread(target=pepPizza, args=(0.000,0.000,0.000,0.000))
+  fourteen.start()
 
 # Pep pizza function
 def pepPizza(mSpin,bSpin,mMove,bMove):
@@ -194,6 +197,6 @@ sevenButton  = Button(screen, text = "7 in.", font = myFont, bg = "lightgreen", 
 sevenButton.place(x=0, y=0)
 
 stopButton  = Button(screen, text = "STOP", font = myFontLarge, bg = "red", command = stopAll, height = 2 , width = 6) 
-stopButton.place(x=100, y=150)
+stopButton.place(x=100, y=160)
 
 mainloop()
