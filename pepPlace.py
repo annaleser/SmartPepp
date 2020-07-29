@@ -65,7 +65,7 @@ def sevenProgram():
   global isRunning
   if(isRunning == False):
     print("7")
-    seven = threading.Thread(target=pepPizza, args=(0.000075,0.0003189,0.0001721,0.0002366,7.419354839,13000))
+    seven = threading.Thread(target=pepPizza, args=(0.000075,0.0003189,0.0001721,0.0002366,7.419354839,14000))
     seven.start()
 
 # 10 inch function
@@ -73,7 +73,7 @@ def tenProgram():
   global isRunning
   if(isRunning == False):
     print("10")
-    ten = threading.Thread(target=pepPizza, args=(0.0000484,0.0004287,0.0000895,0.0003607,15.48387097,15000))
+    ten = threading.Thread(target=pepPizza, args=(0.0000484,0.0004287,0.0000895,0.0003607,15.48387097,16000))
     ten.start()
 
 # 12 inch function
