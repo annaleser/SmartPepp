@@ -165,7 +165,7 @@ def center():
       #time.sleep(.000075)
   
   move(IN,0,0.000025)
-  time.sleep(3)
+  time.sleep(2.5)
   stopMoving()
   
   # Create start time var
