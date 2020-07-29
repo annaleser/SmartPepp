@@ -164,8 +164,8 @@ def center():
       #GPIO.output(SMALL_STEP, GPIO.LOW)
       #time.sleep(.000075)
   
-  move(IN,0,0.00005)
-  time.sleep(2)
+  move(IN,0,0.000025)
+  time.sleep(3)
   stopMoving()
   
   # Create start time var
