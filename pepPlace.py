@@ -92,7 +92,7 @@ def fourteenProgram():
     fourteen = threading.Thread(target=pepPizza, args=(0.000055,0.0003347,0.0000661,0.0004185,30.96774194))
     fourteen.start()
 
-# Pep pizza function given 2 linear functions, mx+b
+# Pep pizza function given 2 linear functions, mx+b, and time
 def pepPizza(mSpin,bSpin,mMove,bMove,totalTime):
   global isRunning
   isRunning = True
@@ -103,7 +103,7 @@ def pepPizza(mSpin,bSpin,mMove,bMove,totalTime):
   time.sleep(totalTime)
   stopAll()
 
-# Slice functions
+# Slice function
 def slice(speed):
     # Create rpm for dc
     global dc
@@ -157,12 +157,16 @@ def moveFunc(m,b):
 
 # Move to center
 def center():
-  for i in range(10000):
-      GPIO.output(SMALL_DIR, IN)
-      GPIO.output(SMALL_STEP, GPIO.HIGH)
-      time.sleep(.000075)
-      GPIO.output(SMALL_STEP, GPIO.LOW)
-      time.sleep(.000075)
+  #for i in range(10000):
+      #GPIO.output(SMALL_DIR, IN)
+      #GPIO.output(SMALL_STEP, GPIO.HIGH)
+      #time.sleep(.000075)
+      #GPIO.output(SMALL_STEP, GPIO.LOW)
+      #time.sleep(.000075)
+  
+  move(IN,0,0.00005)
+  time.sleep(2)
+  stopMoving()
   
   # Create start time var
   global startTime
