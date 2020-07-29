@@ -157,16 +157,12 @@ def moveFunc(m,b):
 
 # Move to center
 def center():
-  #for i in range(10000):
-      #GPIO.output(SMALL_DIR, IN)
-      #GPIO.output(SMALL_STEP, GPIO.HIGH)
-      #time.sleep(.000075)
-      #GPIO.output(SMALL_STEP, GPIO.LOW)
-      #time.sleep(.000075)
-  
-  move(IN,0,0.000025)
-  time.sleep(2.25)
-  stopMoving()
+  for i in range(10000):
+      GPIO.output(SMALL_DIR, IN)
+      GPIO.output(SMALL_STEP, GPIO.HIGH)
+      time.sleep(.000075)
+      GPIO.output(SMALL_STEP, GPIO.LOW)
+      time.sleep(.000075)
   
   # Create start time var
   global startTime
