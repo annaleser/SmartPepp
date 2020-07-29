@@ -73,7 +73,7 @@ def tenProgram():
   global isRunning
   if(isRunning == False):
     print("10")
-    ten = threading.Thread(target=pepPizza, args=(0.0000484,0.0004287,0.0000895,0.0003607,15.48387097,10000))
+    ten = threading.Thread(target=pepPizza, args=(0.0000484,0.0004287,0.0000895,0.0003607,15.48387097,12000))
     ten.start()
 
 # 12 inch function
@@ -81,7 +81,7 @@ def twelveProgram():
   global isRunning
   if(isRunning == False):
     print("12")
-    twelve = threading.Thread(target=pepPizza, args=(0.0000603,0.0003444,0.0000803,0.0003751,22.58064516,10000))
+    twelve = threading.Thread(target=pepPizza, args=(0.0000603,0.0003444,0.0000803,0.0003751,22.58064516,15000))
     twelve.start()
 
 # 14 inch function
@@ -89,7 +89,7 @@ def fourteenProgram():
   global isRunning
   if(isRunning == False):
     print("14")
-    fourteen = threading.Thread(target=pepPizza, args=(0.000055,0.0003347,0.0000661,0.0004185,30.96774194,15000))
+    fourteen = threading.Thread(target=pepPizza, args=(0.000055,0.0003347,0.0000661,0.0004185,30.96774194,18000))
     fourteen.start()
 
 # Pep pizza function given 2 linear functions, mx+b, time, and amount to move at end
