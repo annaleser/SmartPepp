@@ -73,7 +73,7 @@ def tenProgram():
   global isRunning
   if(isRunning == False):
     print("10")
-    ten = threading.Thread(target=pepPizza, args=(0.0000484,0.0004287,0.0000895,0.0003607,15.48387097,17000))
+    ten = threading.Thread(target=pepPizza, args=(0.0000484,0.0004287,0.0000895,0.0003607,15.48387097,17250))
     ten.start()
 
 # 12 inch function
