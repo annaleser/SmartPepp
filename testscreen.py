@@ -2,42 +2,39 @@ from Tkinter import *
 import tkFont
 import RPi.GPIO as GPIO
 import time
+import threading
 import sys
-#import serial
-import datetime
+#import datetime
 #import pyfireconnect
 #from firebase import firebase
 #import urllib
-import json
-import os
-import threading
+#import json
+#import os
 
-#Raspberry Pi set up
+# Raspberry Pi set up
 GPIO.setmode(GPIO.BOARD)
 GPIO.setwarnings(False)
 
-#Motor set up
-#Rotation and delay variables
-CW = 1     # Clockwise Rotation
-CCW = 0    # Counterclockwise Rotation
-b_delay = 0.00021875 # Big stepper delay
-s_delay = .000075 # Small stepper delay
+# Motor set up
+# Rotation and delay variables
+OUT = 1     # Clockwise Rotation
+IN = 0    # Counterclockwise Rotation
 
-#Big stepper motor set up
+# Big stepper motor set up
 BIG_DIR = 21   # Direction GPIO Pin
 BIG_STEP = 22  # Step GPIO Pin
 
 GPIO.setup(BIG_DIR, GPIO.OUT)
 GPIO.setup(BIG_STEP, GPIO.OUT)
 
-#Small stepper motor set up
+# Small stepper motor set up
 SMALL_DIR = 16   # Direction GPIO Pin
 SMALL_STEP = 18  # Step GPIO Pin
 
 GPIO.setup(SMALL_DIR, GPIO.OUT)
 GPIO.setup(SMALL_STEP, GPIO.OUT)
 
-#DC motor set up
+# DC Motor set up
 rpwm = 5
 lpwm = 7
 
@@ -46,153 +43,151 @@ GPIO.setup(lpwm,GPIO.OUT)
 GPIO.output(rpwm, GPIO.LOW)
 GPIO.output(lpwm,GPIO.LOW)
 
-#TK screen set up
+global dc
+dc = GPIO.PWM(rpwm, 50)
+
+# TK screen set up
 screen = Tk()
 screen.overrideredirect(1)
 screen.geometry('800x480')
-screen.title("Test Screen")
+screen.title("Sm^rt Pepp")
 
-#Fonts for screen
+# Fonts for screen
 myFont = tkFont.Font(family = 'Helvetica', size = 36, weight = 'bold')
-myFontLarge = tkFont.Font(family = 'Helvetica', size = 64, weight = 'bold')
+myFontLarge = tkFont.Font(family = 'Helvetica', size = 80, weight = 'bold')
 
-#Functions for starting and stopping spin
-def spinProgram():
-    global spinning  #create global
+# Not running at start
+global isRunning
+isRunning = False
+
+# 7 inch function
+def sevenProgram():
+  global isRunning
+  if(isRunning == False):
+    print("7")
+    seven = threading.Thread(target=pepPizza, args=(0.000075,0.0003189,0.0001721,0.0002366,7.419354839))
+    seven.start()
+
+# 10 inch function
+def tenProgram():
+  global isRunning
+  if(isRunning == False):
+    print("10")
+    ten = threading.Thread(target=pepPizza, args=(0.0000484,0.0004287,0.0000895,0.0003607,15.48387097))
+    ten.start()
+
+# 12 inch function
+def twelveProgram():
+  global isRunning
+  if(isRunning == False):
+    print("12")
+    twelve = threading.Thread(target=pepPizza, args=(0.0000603,0.0003444,0.0000803,0.0003751,22.58064516))
+    twelve.start()
+
+# 14 inch function
+def fourteenProgram():
+  global isRunning
+  if(isRunning == False):
+    print("14")
+    fourteen = threading.Thread(target=pepPizza, args=(0.000055,0.0003347,0.0000661,0.0004185,30.96774194))
+    fourteen.start()
+
+# Pep pizza function given 2 linear functions, mx+b, and time
+def pepPizza(mSpin,bSpin,mMove,bMove,totalTime):
+  global isRunning
+  isRunning = True
+  center()
+  slice(41)
+  spin(mSpin,bSpin)
+  move(IN,mMove,bMove)
+  time.sleep(totalTime)
+  stopAll()
+
+# Slice function
+def slice(speed):
+    # Create rpm for dc
+    global dc
+    dc.start(speed)
+
+# Spin functions
+def spin(m,b):
+    global spinning
     spinning = True
 
     # Create new thread
-    spin = threading.Thread(target=spinFunc)
+    spin = threading.Thread(target=spinFunc, args=(m,b))
     # Start new thread
     spin.start()
     
-def spinFunc():
+def spinFunc(m,b):
+  global startTime
   while spinning:
     if spinning == False:
       break
     else:
+      delay = m*(time.time()-startTime)+b
       GPIO.output(BIG_STEP, GPIO.HIGH)
-      time.sleep(b_delay)
+      time.sleep(delay)
       GPIO.output(BIG_STEP, GPIO.LOW)
-      time.sleep(b_delay)
+      time.sleep(delay)
+
+# Move functions
+def move(direction,m,b):
+  global moving
+  moving = True
+    
+  # Set direction to move
+  GPIO.output(SMALL_DIR, direction)
+
+  # Create new thread
+  move = threading.Thread(target=moveFunc, args=(m,b))
+  # Start new thread
+  move.start()
+    
+def moveFunc(m,b):
+  while moving:
+    if moving == False:
+      break
+    else:
+      delay = m*(time.time()-startTime)+b
+      GPIO.output(SMALL_STEP, GPIO.HIGH)
+      time.sleep(delay)
+      GPIO.output(SMALL_STEP, GPIO.LOW)
+      time.sleep(delay)
+
+# Move to center
+def center():
+  #for i in range(10000):
+      #GPIO.output(SMALL_DIR, IN)
+      #GPIO.output(SMALL_STEP, GPIO.HIGH)
+      #time.sleep(.000075)
+      #GPIO.output(SMALL_STEP, GPIO.LOW)
+      #time.sleep(.000075)
+  
+  move(IN,0,0.00005)
+  time.sleep(2)
+  stopMoving()
+  
+  # Create start time var
+  global startTime
+  startTime = time.time()
+
+# Stop functions
+def stopSlicing():
+  global dc
+  dc.stop()
 
 def stopSpinning():
   global spinning
   spinning = False
-
-#Functions for moving motor in and out
-def inProgram():
-    global movingIn  #create global
-    movingIn = True
-    global movingOut
-    movingOut = False
-
-    # Create new thread
-    moveIn = threading.Thread(target=inFunc)
-    # Start new thread
-    moveIn.start()
-    
-def inFunc():
-  while movingIn:
-    if movingIn == False:
-      break
-    else:
-      GPIO.output(SMALL_DIR, CCW)
-      GPIO.output(SMALL_STEP, GPIO.HIGH)
-      time.sleep(25*s_delay)
-      GPIO.output(SMALL_STEP, GPIO.LOW)
-      time.sleep(25*s_delay)
-
-def outProgram():
-    global movingOut  #create global
-    movingOut = True
-    global movingIn
-    movingIn = False
-
-    # Create new thread
-    moveOut = threading.Thread(target=outFunc)
-    # Start new thread
-    moveOut.start()
-    
-def outFunc():
-  while movingOut:
-    if movingOut == False:
-      break
-    else:
-      GPIO.output(SMALL_DIR, CW)
-      GPIO.output(SMALL_STEP, GPIO.HIGH)
-      time.sleep(s_delay)
-      GPIO.output(SMALL_STEP, GPIO.LOW)
-      time.sleep(s_delay)
-
+  
 def stopMoving():
-  global movingIn
-  global movingOut
-  movingIn = False
-  movingOut = False
-  
-#Functions for slicing
-def sliceProgram():
-    global slicing  #create global
-    slicing = True
+  global moving
+  moving = False
 
-    # Create rpm for dc
-    global dc
-    global speed
-    dc = GPIO.PWM(rpwm, 50)
-    dc.start(speed)
-
-def stopSlicing():
-  global dc
-  global slicing
-  slicing = False
-  dc.stop()
-  
-def faster():
-  global speed
-  global slicing
-  speed = speed + 1
-  if slicing == True:
-    global dc
-    dc.stop()
-    dc.start(speed)
-  rpms.delete(1.0,END)
-  rpms.insert(END, str(speed))
-  
-def slower():
-  global speed
-  global slicing
-  speed = speed - 1
-  if slicing == True:
-    global dc
-    dc.stop()
-    dc.start(speed)
-  rpms.delete(1.0,END)
-  rpms.insert(END, str(speed))
-
-#Move to center
-def center():
-  for i in range(10000):
-      GPIO.output(SMALL_DIR, CCW)
-      GPIO.output(SMALL_STEP, GPIO.HIGH)
-      time.sleep(s_delay)
-      GPIO.output(SMALL_STEP, GPIO.LOW)
-      time.sleep(s_delay)
-
-#Stop everything
 def stopAll():
-  #All variables False
-  global slicing
-  slicing = False
-  global movingIn
-  global movingOut
-  movingIn = False
-  movingOut = False
-  global spinning
-  spinning = False
-  #All motors stop
   try:
-    dc.stop()
+    stopSlicing()
   except:
     pass
   try:
@@ -203,41 +198,23 @@ def stopAll():
     stopMoving()
   except:
     pass
-    
-#Button set up
-stopButton  = Button(screen, text = "STOP", font = myFontLarge, bg = "red", command = stopAll, height = 2 , width = 5) 
-stopButton.place(x=175, y=110)
+  global isRunning
+  isRunning = False
 
-inButton  = Button(screen, text = "IN", font = myFont, bg = "green", command = inProgram, height = 2 , width = 4) 
-inButton.place(x=5, y=10)
-stopMoveButton  = Button(screen, text = "STOP", font = myFont, bg = "blue", command = stopMoving, height = 2 , width = 4) 
-stopMoveButton.place(x=5, y=160)
-outButton  = Button(screen, text = "OUT", font = myFont, bg = "purple", command = outProgram, height = 2 , width = 4) 
-outButton.place(x=5, y=310)
+# Button set up
+fourteenButton  = Button(screen, text = "14 in.", font = myFont, bg = "lightgreen", command = fourteenProgram, height = 2 , width = 4) 
+fourteenButton.place(x=450, y=0)
 
-spinButton  = Button(screen, text = "SPIN", font = myFont, bg = "yellow", command = spinProgram, height = 2 , width = 4) 
-spinButton.place(x=450, y=85)
-stopSpinButton  = Button(screen, text = "STOP", font = myFont, bg = "orange", command = stopSpinning, height = 2 , width = 4) 
-stopSpinButton.place(x=450, y=240)
+twelveButton  = Button(screen, text = "12 in.", font = myFont, bg = "lightgreen", command = twelveProgram, height = 2 , width = 4) 
+twelveButton.place(x=300, y=0)
 
-rpms = Text(screen, font = myFont, width=2, height=1)
-rpms.place(x=270, y=5)
-global speed
-speed = 25
-rpms.insert(END, str(speed))
-global slicing
-slicing = False
-fasterButton = Button(screen, text = "<", font = myFont, bg = "pink", command = slower, height = 1 , width = 2)
-fasterButton.place(x=185, y=5)
-slowerButton = Button(screen, text = ">", font = myFont, bg = "grey", command = faster, height = 1 , width = 2)
-slowerButton.place(x=335, y=5)
+tenButton  = Button(screen, text = "10 in.", font = myFont, bg = "lightgreen", command = tenProgram, height = 2 , width = 4) 
+tenButton.place(x=150, y=0)
 
-startSliceButton = Button(screen, text = "SLICE", font = myFont, bg = "aqua", command = sliceProgram, height = 1 , width = 4)
-startSliceButton.place(x=175, y=375)
-stopSliceButton = Button(screen, text = "STOP", font = myFont, bg = "violet", command = stopSlicing, height = 1 , width = 4)
-stopSliceButton.place(x=320, y=375)
+sevenButton  = Button(screen, text = "7 in.", font = myFont, bg = "lightgreen", command = sevenProgram, height = 2 , width = 4) 
+sevenButton.place(x=0, y=0)
 
-centerButton = Button(screen, text = ".", font = myFont, bg = "gold", command = center, height = 1 , width = 1)
-centerButton.place(x=500, y=5)
+stopButton  = Button(screen, text = "STOP", font = myFontLarge, bg = "red", command = stopAll, height = 2 , width = 6) 
+stopButton.place(x=100, y=160)
 
 mainloop()
