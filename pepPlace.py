@@ -160,9 +160,9 @@ def center():
   for i in range(10000):
       GPIO.output(SMALL_DIR, IN)
       GPIO.output(SMALL_STEP, GPIO.HIGH)
-      time.sleep(.000075)
+      time.sleep(.0000075)
       GPIO.output(SMALL_STEP, GPIO.LOW)
-      time.sleep(.000075)
+      time.sleep(.0000075)
   
   # Create start time var
   global startTime
