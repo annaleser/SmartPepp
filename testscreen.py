@@ -138,13 +138,13 @@ def outFunc():
       
 def moreSDelay():
   global s_delay
-  s_delay = s_delay + .00001
+  s_delay = s_delay + .000001
   sd.delete(1.0,END)
   sd.insert(END, str("%.2e" %s_delay))
   
 def lessSDelay():
   global s_delay
-  s_delay = s_delay - .00001
+  s_delay = s_delay - .000001
   sd.delete(1.0,END)
   sd.insert(END, str("%.2e" %s_delay))
 
