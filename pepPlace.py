@@ -11,6 +11,8 @@ import sys
 #import json
 #import os
 
+#WARNING: MAY NOT END PROPERLY...14 changed for newer nums
+
 # Raspberry Pi set up
 GPIO.setmode(GPIO.BOARD)
 GPIO.setwarnings(False)
@@ -65,7 +67,7 @@ def sevenProgram():
   global isRunning
   if(isRunning == False):
     print("7")
-    seven = threading.Thread(target=pepPizza, args=(0.000075,0.0003189,0.0001721,0.0002366,7.419354839,14500))
+    seven = threading.Thread(target=pepPizza, args=(0.0000784,0.0004270,0.0001721,0.0003031,9.504132231,14500))
     seven.start()
 
 # 10 inch function
@@ -73,7 +75,7 @@ def tenProgram():
   global isRunning
   if(isRunning == False):
     print("10")
-    ten = threading.Thread(target=pepPizza, args=(0.0000484,0.0004287,0.0000895,0.0003607,15.48387097,17750))
+    ten = threading.Thread(target=pepPizza, args=(0.0000506,0.0005740,0.0000895,0.0004621,19.83471074,17750))
     ten.start()
 
 # 12 inch function
@@ -81,7 +83,7 @@ def twelveProgram():
   global isRunning
   if(isRunning == False):
     print("12")
-    twelve = threading.Thread(target=pepPizza, args=(0.0000603,0.0003444,0.0000803,0.0003751,22.58064516,19500))
+    twelve = threading.Thread(target=pepPizza, args=(0.0000630,0.0004610,0.0000803,0.0004805,28.92561983,19500))
     twelve.start()
 
 # 14 inch function
@@ -89,7 +91,7 @@ def fourteenProgram():
   global isRunning
   if(isRunning == False):
     print("14")
-    fourteen = threading.Thread(target=pepPizza, args=(0.000055,0.0003347,0.0000661,0.0004185,30.96774194,22000))
+    fourteen = threading.Thread(target=pepPizza, args=(0.0000514,0.0002588,0.0000652,0.0003273,24.79338843,22000))
     fourteen.start()
 
 # Pep pizza function given 2 linear functions, mx+b, time, and amount to move at end
@@ -97,7 +99,7 @@ def pepPizza(mSpin,bSpin,mMove,bMove,totalTime,reps):
   global isRunning
   isRunning = True
   center()
-  slice(41)
+  slice(30)
   spin(mSpin,bSpin)
   move(IN,mMove,bMove)
   time.sleep(totalTime)
