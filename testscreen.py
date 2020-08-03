@@ -51,7 +51,7 @@ screen.geometry('800x480')
 screen.title("Test Screen")
 
 #Fonts for screen
-myFontSmall = tkFont.Font(family = 'Helvetica', size = 20, weight = 'bold')
+myFontSmall = tkFont.Font(family = 'Helvetica', size = 16, weight = 'bold')
 myFont = tkFont.Font(family = 'Helvetica', size = 36, weight = 'bold')
 myFontLarge = tkFont.Font(family = 'Helvetica', size = 64, weight = 'bold')
 
@@ -232,31 +232,31 @@ stopButton  = Button(screen, text = "STOP", font = myFontLarge, bg = "red", comm
 stopButton.place(x=175, y=110)
 
 moreSButton = Button(screen, text = "^", font = myFont, bg = "SeaGreen1", command = moreSDelay, height = 1 , width = 2)
-moreSButton.place(x=5, y=50)
+moreSButton.place(x=30, y=50)
 lessSButton = Button(screen, text = "v", font = myFont, bg = "DarkOliveGreen3", command = lessSDelay, height = 1 , width = 2)
-lessSButton.place(x=5, y=325)
+lessSButton.place(x=30, y=325)
 inButton  = Button(screen, text = "IN", font = myFont, bg = "green", command = inProgram, height = 1 , width = 4) 
 inButton.place(x=5, y=125)
 stopMoveButton  = Button(screen, text = "STOP", font = myFont, bg = "blue", command = stopMoving, height = 1 , width = 4) 
 stopMoveButton.place(x=5, y=200)
 outButton  = Button(screen, text = "OUT", font = myFont, bg = "purple", command = outProgram, height = 1 , width = 4) 
 outButton.place(x=5, y=270)
-sd = Text(screen, font = myFontSmall, width=4, height=1)
+sd = Text(screen, font = myFontSmall, width=8, height=1)
 sd.place(x=5, y=0)
 global s_delay
 s_delay = .000075 # Small stepper delay
 sd.insert(END, str(s_delay))
 
 moreBButton = Button(screen, text = "^", font = myFont, bg = "coral1", command = moreBDelay, height = 1 , width = 2)
-moreBButton.place(x=450, y=75)
+moreBButton.place(x=475, y=95)
 lessBButton = Button(screen, text = "v", font = myFont, bg = "firebrick1", command = lessBDelay, height = 1 , width = 2)
-lessBButton.place(x=450, y=300)
+lessBButton.place(x=475, y=320)
 spinButton  = Button(screen, text = "SPIN", font = myFont, bg = "yellow", command = spinProgram, height = 1 , width = 4) 
-spinButton.place(x=450, y=150)
+spinButton.place(x=450, y=170)
 stopSpinButton  = Button(screen, text = "STOP", font = myFont, bg = "orange", command = stopSpinning, height = 1 , width = 4) 
-stopSpinButton.place(x=450, y=225)
-bd = Text(screen, font = myFontSmall, width=4, height=1)
-bd.place(x=450, y=375)
+stopSpinButton.place(x=450, y=245)
+bd = Text(screen, font = myFontSmall, width=8, height=1)
+bd.place(x=450, y=395)
 global b_delay
 b_delay = .00175 # Big stepper delay
 bd.insert(END, str(b_delay))
