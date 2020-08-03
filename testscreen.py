@@ -17,11 +17,9 @@ GPIO.setmode(GPIO.BOARD)
 GPIO.setwarnings(False)
 
 #Motor set up
-#Rotation and delay variables
+#Rotation variables
 CW = 1     # Clockwise Rotation
 CCW = 0    # Counterclockwise Rotation
-b_delay = .00175 # Big stepper delay
-s_delay = .000075 # Small stepper delay
 
 #Big stepper motor set up
 BIG_DIR = 21   # Direction GPIO Pin
@@ -75,6 +73,18 @@ def spinFunc():
       time.sleep(b_delay)
       GPIO.output(BIG_STEP, GPIO.LOW)
       time.sleep(b_delay)
+      
+def moreBDelay():
+  global b_delay
+  b_delay = b_delay + .0001
+  bd.delete(1.0,END)
+  bd.insert(END, str(b_delay))
+  
+def lessBDelay():
+  global b_delay
+  b_delay = b_delay - .0001
+  bd.delete(1.0,END)
+  bd.insert(END, str(b_delay))
 
 def stopSpinning():
   global spinning
@@ -124,6 +134,18 @@ def outFunc():
       time.sleep(s_delay)
       GPIO.output(SMALL_STEP, GPIO.LOW)
       time.sleep(s_delay)
+      
+def moreSDelay():
+  global s_delay
+  s_delay = s_delay + .00001
+  sd.delete(1.0,END)
+  sd.insert(END, str(s_delay))
+  
+def lessSDelay():
+  global s_delay
+  s_delay = s_delay - .00001
+  sd.delete(1.0,END)
+  sd.insert(END, str(s_delay))
 
 def stopMoving():
   global movingIn
@@ -208,22 +230,40 @@ def stopAll():
 stopButton  = Button(screen, text = "STOP", font = myFontLarge, bg = "red", command = stopAll, height = 2 , width = 5) 
 stopButton.place(x=175, y=110)
 
-inButton  = Button(screen, text = "IN", font = myFont, bg = "green", command = inProgram, height = 2 , width = 4) 
-inButton.place(x=5, y=10)
-stopMoveButton  = Button(screen, text = "STOP", font = myFont, bg = "blue", command = stopMoving, height = 2 , width = 4) 
+moreSButton = Button(screen, text = "^", font = myFont, bg = "lightgreen", command = moreSDelay, height = 1 , width = 2)
+moreSButton.place(x=5, y=20)
+lessSButton = Button(screen, text = "v", font = myFont, bg = "darkgreen", command = lessSDelay, height = 1 , width = 2)
+lessSButton.place(x=5, y=300)
+inButton  = Button(screen, text = "IN", font = myFont, bg = "green", command = inProgram, height = 1 , width = 4) 
+inButton.place(x=5, y=30)
+stopMoveButton  = Button(screen, text = "STOP", font = myFont, bg = "blue", command = stopMoving, height = 1 , width = 4) 
 stopMoveButton.place(x=5, y=160)
-outButton  = Button(screen, text = "OUT", font = myFont, bg = "purple", command = outProgram, height = 2 , width = 4) 
-outButton.place(x=5, y=310)
+outButton  = Button(screen, text = "OUT", font = myFont, bg = "purple", command = outProgram, height = 1 , width = 4) 
+outButton.place(x=5, y=270)
+sd = Text(screen, font = myFont, width=3, height=1)
+sd.place(x=5, y=0)
+global s_delay
+s_delay = .000075 # Small stepper delay
+sd.insert(END, str(s_delay))
 
-spinButton  = Button(screen, text = "SPIN", font = myFont, bg = "yellow", command = spinProgram, height = 2 , width = 4) 
+moreBButton = Button(screen, text = "^", font = myFont, bg = "lightorange", command = moreBDelay, height = 1 , width = 2)
+moreBButton.place(x=450, y=60)
+lessBButton = Button(screen, text = "v", font = myFont, bg = "lightgrey", command = lessBDelay, height = 1 , width = 2)
+lessBButton.place(x=450, y=250)
+spinButton  = Button(screen, text = "SPIN", font = myFont, bg = "yellow", command = spinProgram, height = 1 , width = 4) 
 spinButton.place(x=450, y=85)
-stopSpinButton  = Button(screen, text = "STOP", font = myFont, bg = "orange", command = stopSpinning, height = 2 , width = 4) 
-stopSpinButton.place(x=450, y=240)
+stopSpinButton  = Button(screen, text = "STOP", font = myFont, bg = "orange", command = stopSpinning, height = 1 , width = 4) 
+stopSpinButton.place(x=450, y=150)
+bd = Text(screen, font = myFont, width=3, height=1)
+bd.place(x=450, y=200)
+global b_delay
+b_delay = .00175 # Big stepper delay
+bd.insert(END, str(b_delay))
 
 rpms = Text(screen, font = myFont, width=2, height=1)
 rpms.place(x=270, y=5)
 global speed
-speed = 25
+speed = 25 # Initial DC speed
 rpms.insert(END, str(speed))
 global slicing
 slicing = False
