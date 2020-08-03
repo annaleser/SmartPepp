@@ -79,13 +79,13 @@ def moreBDelay():
   global b_delay
   b_delay = b_delay + .0001
   bd.delete(1.0,END)
-  bd.insert(END, str(b_delay))
+  bd.insert(END, str("%.2e" %b_delay))
   
 def lessBDelay():
   global b_delay
   b_delay = b_delay - .0001
   bd.delete(1.0,END)
-  bd.insert(END, str(b_delay))
+  bd.insert(END, str("%.2e" %b_delay))
 
 def stopSpinning():
   global spinning
@@ -140,13 +140,13 @@ def moreSDelay():
   global s_delay
   s_delay = s_delay + .00001
   sd.delete(1.0,END)
-  sd.insert(END, str(s_delay))
+  sd.insert(END, str("%.2e" %s_delay))
   
 def lessSDelay():
   global s_delay
   s_delay = s_delay - .00001
   sd.delete(1.0,END)
-  sd.insert(END, str(s_delay))
+  sd.insert(END, str("%.2e" %s_delay))
 
 def stopMoving():
   global movingIn
@@ -234,7 +234,7 @@ stopButton.place(x=175, y=110)
 moreSButton = Button(screen, text = "^", font = myFont, bg = "SeaGreen1", command = moreSDelay, height = 1 , width = 2)
 moreSButton.place(x=30, y=50)
 lessSButton = Button(screen, text = "v", font = myFont, bg = "DarkOliveGreen3", command = lessSDelay, height = 1 , width = 2)
-lessSButton.place(x=30, y=325)
+lessSButton.place(x=30, y=340)
 inButton  = Button(screen, text = "IN", font = myFont, bg = "green", command = inProgram, height = 1 , width = 4) 
 inButton.place(x=5, y=125)
 stopMoveButton  = Button(screen, text = "STOP", font = myFont, bg = "blue", command = stopMoving, height = 1 , width = 4) 
@@ -242,21 +242,21 @@ stopMoveButton.place(x=5, y=200)
 outButton  = Button(screen, text = "OUT", font = myFont, bg = "purple", command = outProgram, height = 1 , width = 4) 
 outButton.place(x=5, y=270)
 sd = Text(screen, font = myFontSmall, width=8, height=1)
-sd.place(x=5, y=0)
+sd.place(x=20, y=15)
 global s_delay
 s_delay = .000075 # Small stepper delay
 sd.insert(END, str("%.2e" %s_delay))
 
-moreBButton = Button(screen, text = "^", font = myFont, bg = "coral1", command = moreBDelay, height = 1 , width = 2)
+moreBButton = Button(screen, text = "^", font = myFont, bg = "coral2", command = moreBDelay, height = 1 , width = 2)
 moreBButton.place(x=475, y=95)
-lessBButton = Button(screen, text = "v", font = myFont, bg = "firebrick1", command = lessBDelay, height = 1 , width = 2)
+lessBButton = Button(screen, text = "v", font = myFont, bg = "MistyRose4", command = lessBDelay, height = 1 , width = 2)
 lessBButton.place(x=475, y=320)
 spinButton  = Button(screen, text = "SPIN", font = myFont, bg = "yellow", command = spinProgram, height = 1 , width = 4) 
 spinButton.place(x=450, y=170)
 stopSpinButton  = Button(screen, text = "STOP", font = myFont, bg = "orange", command = stopSpinning, height = 1 , width = 4) 
 stopSpinButton.place(x=450, y=245)
 bd = Text(screen, font = myFontSmall, width=8, height=1)
-bd.place(x=450, y=395)
+bd.place(x=465, y=410)
 global b_delay
 b_delay = .00175 # Big stepper delay
 bd.insert(END, str("%.2e" %b_delay))
