@@ -245,7 +245,7 @@ sd = Text(screen, font = myFontSmall, width=8, height=1)
 sd.place(x=5, y=0)
 global s_delay
 s_delay = .000075 # Small stepper delay
-sd.insert(END, str(s_delay))
+sd.insert(END, str("%.2e" %s_delay))
 
 moreBButton = Button(screen, text = "^", font = myFont, bg = "coral1", command = moreBDelay, height = 1 , width = 2)
 moreBButton.place(x=475, y=95)
@@ -259,7 +259,7 @@ bd = Text(screen, font = myFontSmall, width=8, height=1)
 bd.place(x=450, y=395)
 global b_delay
 b_delay = .00175 # Big stepper delay
-bd.insert(END, str(b_delay))
+bd.insert(END, str("%.2e" %b_delay))
 
 rpms = Text(screen, font = myFont, width=2, height=1)
 rpms.place(x=270, y=5)
