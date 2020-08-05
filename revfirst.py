@@ -100,7 +100,7 @@ def pepPizza(mSpin,bSpin,mMove,bMove,totalTime,reps):
   isRunning = True
   toStart(reps)
   slice(30)
-  oneRevIn(.000849,1000,3000)
+  oneRevIn(.000849,3000,3000)
   spin(mSpin,bSpin)
   move(OUT,mMove,bMove)
   time.sleep(totalTime)
@@ -165,6 +165,7 @@ def oneRevIn(delay,reps,move):
       time.sleep(delay)
       GPIO.output(BIG_STEP, GPIO.LOW)
       time.sleep(delay)
+  GPIO.output(SMALL_DIR, OUT)
   for i in range(move):
       GPIO.output(SMALL_STEP, GPIO.HIGH)
       time.sleep(.0000025)
