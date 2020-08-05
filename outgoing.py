@@ -161,7 +161,7 @@ def moveFunc(m,b):
 # Move to start for this pizza
 def toStart(reps):
   GPIO.output(SMALL_DIR, IN)
-  for i in range(amt):
+  for i in range(reps):
       GPIO.output(SMALL_STEP, GPIO.HIGH)
       time.sleep(.0000025)
       GPIO.output(SMALL_STEP, GPIO.LOW)
