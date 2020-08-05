@@ -100,7 +100,7 @@ def pepPizza(mSpin,bSpin,mMove,bMove,totalTime,reps):
   isRunning = True
   toStart(reps)
   slice(30)
-  oneRevIn(.000849,3000,3000)
+  oneRevIn(.000849,3500,3000)
   spin(mSpin,bSpin)
   move(OUT,mMove,bMove)
   time.sleep(totalTime)
