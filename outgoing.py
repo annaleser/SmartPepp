@@ -11,8 +11,6 @@ import sys
 #import json
 #import os
 
-#WARNING: MAY NOT END PROPERLY...ONLY 14 changed for neg nums
-
 # Raspberry Pi set up
 GPIO.setmode(GPIO.BOARD)
 GPIO.setwarnings(False)
@@ -91,7 +89,7 @@ def fourteenProgram():
   global isRunning
   if(isRunning == False):
     print("14")
-    fourteen = threading.Thread(target=pepPizza, args=(-0.0000365,0.000857,-0.0000483,0.00113,20,25000))
+    fourteen = threading.Thread(target=pepPizza, args=(-0.0000365,0.000857,-0.0000483,0.00113,20,24500))
     fourteen.start()
 
 # Pep pizza function given 2 linear functions, mx+b, time, and amount to move at end
