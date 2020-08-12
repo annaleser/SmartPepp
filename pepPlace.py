@@ -161,7 +161,7 @@ def moveFunc(m,b):
 # Move to center (used to be 10000)
 def center():
   GPIO.output(SMALL_DIR, IN)
-  for i in range(5000):
+  for i in range(2500):
       GPIO.output(SMALL_STEP, GPIO.HIGH)
       time.sleep(.0000025)
       GPIO.output(SMALL_STEP, GPIO.LOW)
