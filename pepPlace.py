@@ -91,7 +91,7 @@ def fourteenProgram():
   global isRunning
   if(isRunning == False):
     print("14")
-    fourteen = threading.Thread(target=pepPizza, args=(0.0000514,0.0002588,0.0000652,0.0003273,24.79338843,22000))
+    fourteen = threading.Thread(target=pepPizza, args=(0.0000514,0.0002588,0.0000652,0.0009273,24.79338843,22000))
     fourteen.start()
 
 # Pep pizza function given 2 linear functions, mx+b, time, and amount to move at end
@@ -161,7 +161,7 @@ def moveFunc(m,b):
 # Move to center (used to be 10000)
 def center():
   GPIO.output(SMALL_DIR, IN)
-  for i in range(2500):
+  for i in range(4000):
       GPIO.output(SMALL_STEP, GPIO.HIGH)
       time.sleep(.0000025)
       GPIO.output(SMALL_STEP, GPIO.LOW)
