@@ -106,8 +106,8 @@ def pepPizza(mSpin,bSpin,mMove,bMove,totalTime,reps):
   stopAll()
   #Move slower at end test
   slice(20)
-  spin(0,mSpin*totalTime*(5/4)+bSpin)
-  move(IN,mMove,bMove+3*totalTime/5*mMove)
+  spin(0,mSpin*totalTime*(3/2)+bSpin)
+  move(IN,mMove,bMove+totalTime*mMove)
   time.sleep(totalTime/4)
   stopAll()
   back(reps)
@@ -185,9 +185,9 @@ def back(amt):
   GPIO.output(SMALL_DIR, OUT)
   for i in range(amt):
       GPIO.output(SMALL_STEP, GPIO.HIGH)
-      time.sleep(.00000050)
+      time.sleep(5e-7)
       GPIO.output(SMALL_STEP, GPIO.LOW)
-      time.sleep(.00000050)
+      time.sleep(5e-7)
 
 # Stop functions
 def stopSlicing():
