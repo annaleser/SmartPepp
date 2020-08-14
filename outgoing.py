@@ -89,7 +89,7 @@ def fourteenProgram():
   global isRunning
   if(isRunning == False):
     print("14")
-    fourteen = threading.Thread(target=pepPizza, args=(-0.0000365,0.000857,-0.0000483,0.00113,20,22500))
+    fourteen = threading.Thread(target=pepPizza, args=(-0.0000365,0.000857,-0.0000483,0.00213,20,22000))
     fourteen.start()
 
 # Pep pizza function given 2 linear functions, mx+b, time, and amount to move at end
@@ -172,7 +172,7 @@ def toStart(reps):
 # End function to move out
 def back():
   GPIO.output(SMALL_DIR, OUT)
-  for i in range(8000):
+  for i in range(7000):
       GPIO.output(SMALL_STEP, GPIO.HIGH)
       time.sleep(.0000025)
       GPIO.output(SMALL_STEP, GPIO.LOW)
