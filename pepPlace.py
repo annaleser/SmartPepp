@@ -103,10 +103,9 @@ def pepPizza(mSpin,bSpin,mMove,bMove,totalTime,reps):
   spin(mSpin,bSpin)
   move(IN,mMove,bMove)
   time.sleep(3*totalTime/4)
-  
+  stopAll()
   #Move slower at end test
-  global dc
-  dc.changeDutyCycle(20)
+  slice(20)
   spin(0,mSpin*totalTime+bSpin)
   move(IN,mMove,bMove+3*totalTime/4*mMove)
   time.sleep(totalTime/4)
