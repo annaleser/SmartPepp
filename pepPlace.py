@@ -116,6 +116,9 @@ def slice(speed):
 def spin(m,b):
     global spinning
     spinning = True
+    
+    # Set direction of spin
+    GPIO.output(BIG_DIR, 1)
 
     # Create new thread
     spin = threading.Thread(target=spinFunc, args=(m,b))
