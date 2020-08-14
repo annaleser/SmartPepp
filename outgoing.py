@@ -89,7 +89,7 @@ def fourteenProgram():
   global isRunning
   if(isRunning == False):
     print("14")
-    fourteen = threading.Thread(target=pepPizza, args=(-0.0000365,0.000857,-0.0000483,0.00213,20,22000))
+    fourteen = threading.Thread(target=pepPizza, args=(-0.0000365,0.000857,-0.0000483,0.00013,20,22000))
     fourteen.start()
 
 # Pep pizza function given 2 linear functions, mx+b, time, and amount to move at end
