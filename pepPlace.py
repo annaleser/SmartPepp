@@ -91,7 +91,7 @@ def fourteenProgram():
   global isRunning
   if(isRunning == False):
     print("14")
-    fourteen = threading.Thread(target=pepPizza, args=(0.0000515,0.0002613,0.0000552,0.00009273,25,20000))
+    fourteen = threading.Thread(target=pepPizza, args=(0.0000515,0.0002613,0.0000552,0.00009273,25,22000))
     fourteen.start()
 
 # Pep pizza function given 2 linear functions, mx+b, time, and amount to move at end
@@ -118,7 +118,7 @@ def spin(m,b):
     spinning = True
     
     # Set direction of spin
-    GPIO.output(BIG_DIR, 1)
+    GPIO.output(BIG_DIR, 0)
 
     # Create new thread
     spin = threading.Thread(target=spinFunc, args=(m,b))
