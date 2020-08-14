@@ -101,10 +101,10 @@ def pepPizza(mSpin,bSpin,mMove,bMove,totalTime,reps):
   toStart(reps)
   slice(30)
   oneRevIn(.000849,3500,3000)
+  oneRevIn(.000749,3250,3000)
   oneRevIn(.000649,3000,3000)
+  oneRevIn(.000549,2750,3000)
   oneRevIn(.000449,2500,3000)
-  oneRevIn(.000249,2000,3000)
-  oneRevIn(.000049,1500,3000)
   stopAll()
   back()
 
